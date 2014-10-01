@@ -37,6 +37,14 @@ ros/ros.h
 -
 iostream
 -
+stdlib.h
+-
+opencv2/opencv.hpp
+/home/sophie/ROS/src/walle/src/opencv2/opencv.hpp
+opencv2/highgui/highgui.hpp
+/home/sophie/ROS/src/walle/src/opencv2/highgui/highgui.hpp
+opencv2/imgproc/imgproc.hpp
+/home/sophie/ROS/src/walle/src/opencv2/imgproc/imgproc.hpp
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
