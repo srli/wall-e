@@ -12,13 +12,12 @@ import time
 import Image
 import roslib; roslib.load_manifest('walle')
 import rospy
-from std_msgs.msg import String
+from std_msgs.msg import Int8MultiArray
 import sys
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 
 
-#HAAR_CASCADE_PATH = "/usr/local/Cellar/opencv/2.4.8.2/share/OpenCV/"
 HAAR_CASCADE_PATH = "/opt/ros/hydro/share/OpenCV/"
  
 class Face:
@@ -83,22 +82,25 @@ def callback(data):
     cv.SetData(image, source.tostring(), 
                source.dtype.itemsize * 3 * source.shape[1])
 
+def depth(data):
+    print type(data)
+
+
 def publisher():
     global image
     rospy.init_node("face_location",anonymous = True)
     rospy.Subscriber("/camera/rgb/image_color", Image, callback)
+    rospy.Subscriber("/camera/depth/image_raw", Image, depth)
 
-     
-    #faceCascade = cv.Load("haarcascades/haarcascade_frontalface_default.xml")
-    #faceCascade = cv.Load("haarcascades/haarcascade_frontalface_alt2.xml")
-    faceCascade = cv.Load(HAAR_CASCADE_PATH + "haarcascades/haarcascade_frontalface_alt.xml")
-    #faceCascade = cv.Load("haarcascades/haarcascade_frontalface_alt_tree.xml")
-    pub = rospy.Publisher('face_location', String)
+    faceCascade = cv.Load(HAAR_CASCADE_PATH + "haarcascades/haarcascade_frontalface_default.xml")
+    #faceCascade = cv.Load(HAAR_CASCADE_PATH + "haarcascades/haarcascade_frontalface_alt2.xml")
+    #faceCascade = cv.Load(HAAR_CASCADE_PATH + "haarcascades/haarcascade_frontalface_alt.xml")
+    #faceCascade = cv.Load(HAAR_CASCADE_PATH + "haarcascades/haarcascade_frontalface_alt_tree.xml")
+    pub = rospy.Publisher('face_location', Int8MultiArray)
     while not rospy.is_shutdown():
         while (cv.WaitKey(15)==-1):
             img = image
             if type(img) == int:
-                print "no data yet"
                 continue;
             else:
                 if not img:
@@ -106,10 +108,16 @@ def publisher():
                 [image,faces] = DetectFace(img, faceCascade)
                 faces.sort(key=lambda face: face.y)
                 if len(faces) != 0:
-                    face = faces[0]        
-                    print "top face at:" + str(face.midx) + ", "+ str(face.midy)
-                    pub.publish(str(face.midx)+","+str(face.midy))
-                cv.ShowImage("face detection test", image)
+                    face_list = []
+                    i = 0
+                    print "published face!"
+                    while i < len(faces):
+                        face = faces[i]        
+                        #print "top face at:" + str(face.midx) + ", "+ str(face.midy)
+                        face_list.append([face.midx, face.midy])
+                        i += 1
+                    #pub.publish(face_list)
+                #cv.ShowImage("face detection test", image)
 
 if __name__ == "__main__":
     image=0 
