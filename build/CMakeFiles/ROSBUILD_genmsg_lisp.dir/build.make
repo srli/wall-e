@@ -74,6 +74,13 @@ CMakeFiles/ROSBUILD_genmsg_lisp: ../msg_gen/lisp/_package_HRI.lisp
 ../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/rospack/package.xml
 ../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/roslib/package.xml
 ../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/rospy/package.xml
+../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/cv_bridge/package.xml
+../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/lisp/HRI.lisp: /opt/ros/indigo/share/image_transport/package.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/ROS/src/walle/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/lisp/HRI.lisp, ../msg_gen/lisp/_package.lisp, ../msg_gen/lisp/_package_HRI.lisp"
 	/opt/ros/indigo/share/roslisp/rosbuild/scripts/genmsg_lisp.py /home/sophie/ROS/src/walle/msg/HRI.msg

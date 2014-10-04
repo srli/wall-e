@@ -73,6 +73,13 @@ CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/rosgraph
 CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/rospack/package.xml
 CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/roslib/package.xml
 CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/rospy/package.xml
+CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/geometry_msgs/package.xml
+CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/sensor_msgs/package.xml
+CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/cv_bridge/package.xml
+CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/message_filters/package.xml
+CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/class_loader/package.xml
+CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/pluginlib/package.xml
+CMakeFiles/test_walle.dir/src/detectpeople.cpp.o: /opt/ros/indigo/share/image_transport/package.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/ROS/src/walle/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/test_walle.dir/src/detectpeople.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/test_walle.dir/src/detectpeople.cpp.o -c /home/sophie/ROS/src/walle/src/detectpeople.cpp

@@ -77,6 +77,13 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/walle/msg/__init__.py
 ../src/walle/msg/_HRI.py: /opt/ros/indigo/share/rospack/package.xml
 ../src/walle/msg/_HRI.py: /opt/ros/indigo/share/roslib/package.xml
 ../src/walle/msg/_HRI.py: /opt/ros/indigo/share/rospy/package.xml
+../src/walle/msg/_HRI.py: /opt/ros/indigo/share/geometry_msgs/package.xml
+../src/walle/msg/_HRI.py: /opt/ros/indigo/share/sensor_msgs/package.xml
+../src/walle/msg/_HRI.py: /opt/ros/indigo/share/cv_bridge/package.xml
+../src/walle/msg/_HRI.py: /opt/ros/indigo/share/message_filters/package.xml
+../src/walle/msg/_HRI.py: /opt/ros/indigo/share/class_loader/package.xml
+../src/walle/msg/_HRI.py: /opt/ros/indigo/share/pluginlib/package.xml
+../src/walle/msg/_HRI.py: /opt/ros/indigo/share/image_transport/package.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/ROS/src/walle/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/walle/msg/_HRI.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/sophie/ROS/src/walle/msg/HRI.msg

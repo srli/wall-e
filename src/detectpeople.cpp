@@ -11,7 +11,8 @@
 static int highestnum = 0;
 
 void cameracallback(const sensor_msgs::Image &msg){
-	std::cout << msg.height << std::endl;
+	printf("hello\n");
+  //std::cout << msg.height << std::endl;
 /*  int current_highest = 0;
 	for(int i = 0; i < msg.height; i++){
     for(int j = 0; j < msg.width; j++){
@@ -31,6 +32,9 @@ int main(int argc, char **argv)
   // ros stuff
   ros::init(argc, argv, "detect_people", ros::init_options::NoSigintHandler);
   ros::NodeHandle rosnode = ros::NodeHandle();
+  //ros::Subscriber subcommand = rosnode.subscribe("/camera/rgb/image_color", 10, cameracallback);
+
+
 
   ros::Subscriber subcommand = rosnode.subscribe("/camera/depth_registered/image_raw", 10, cameracallback);
   printf("subscribe get\n");

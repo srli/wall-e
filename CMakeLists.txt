@@ -15,7 +15,9 @@ rosbuild_genmsg()
 include_directories("${PROJECT_SOURCE_DIR}/include/walle")
 find_package(OpenCV)
 include_directories("${OpenCV_INCLUDE_DIRS}")
-   #target_link_libraries(my_awesome_library ${OpenCV_LIBRARIES})
 
-rosbuild_add_executable(test_walle src/detectpeople.cpp)
-  target_link_libraries(test_walle ${OpenCV_LIBRARIES})
+rosbuild_add_executable(detectpeople src/detectpeople.cpp)
+  target_link_libraries(detectpeople ${OpenCV_LIBRARIES})
+
+rosbuild_add_executable(image_converter src/image_converter.cpp)
+  target_link_libraries(image_converter ${OpenCV_LIBRARIES})

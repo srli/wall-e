@@ -5,9 +5,11 @@
 /home/sophie/ROS/src/walle/build/CMakeFiles/ROSBUILD_gensrv_lisp.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/_catkin_empty_exported_target.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/clean_test_results.dir
+/home/sophie/ROS/src/walle/build/CMakeFiles/detectpeople.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/doxygen.dir
 /home/sophie/ROS/src/walle/build/gtest/CMakeFiles/gtest.dir
 /home/sophie/ROS/src/walle/build/gtest/CMakeFiles/gtest_main.dir
+/home/sophie/ROS/src/walle/build/CMakeFiles/image_converter.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/rosbuild_clean-test-results.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/rosbuild_precompile.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/rosbuild_premsgsrvgen.dir
@@ -20,5 +22,4 @@
 /home/sophie/ROS/src/walle/build/CMakeFiles/test-future.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/test-results.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/test-results-run.dir
-/home/sophie/ROS/src/walle/build/CMakeFiles/test_walle.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/tests.dir

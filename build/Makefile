@@ -231,6 +231,19 @@ clean_test_results/fast:
 .PHONY : clean_test_results/fast
 
 #=============================================================================
+# Target rules for targets named detectpeople
+
+# Build rule for target.
+detectpeople: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 detectpeople
+.PHONY : detectpeople
+
+# fast build rule for target.
+detectpeople/fast:
+	$(MAKE) -f CMakeFiles/detectpeople.dir/build.make CMakeFiles/detectpeople.dir/build
+.PHONY : detectpeople/fast
+
+#=============================================================================
 # Target rules for targets named doxygen
 
 # Build rule for target.
@@ -242,6 +255,19 @@ doxygen: cmake_check_build_system
 doxygen/fast:
 	$(MAKE) -f CMakeFiles/doxygen.dir/build.make CMakeFiles/doxygen.dir/build
 .PHONY : doxygen/fast
+
+#=============================================================================
+# Target rules for targets named image_converter
+
+# Build rule for target.
+image_converter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 image_converter
+.PHONY : image_converter
+
+# fast build rule for target.
+image_converter/fast:
+	$(MAKE) -f CMakeFiles/image_converter.dir/build.make CMakeFiles/image_converter.dir/build
+.PHONY : image_converter/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_clean-test-results
@@ -400,19 +426,6 @@ test-results-run/fast:
 .PHONY : test-results-run/fast
 
 #=============================================================================
-# Target rules for targets named test_walle
-
-# Build rule for target.
-test_walle: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_walle
-.PHONY : test_walle
-
-# fast build rule for target.
-test_walle/fast:
-	$(MAKE) -f CMakeFiles/test_walle.dir/build.make CMakeFiles/test_walle.dir/build
-.PHONY : test_walle/fast
-
-#=============================================================================
 # Target rules for targets named tests
 
 # Build rule for target.
@@ -456,7 +469,7 @@ src/detectpeople.o: src/detectpeople.cpp.o
 
 # target to build an object file
 src/detectpeople.cpp.o:
-	$(MAKE) -f CMakeFiles/test_walle.dir/build.make CMakeFiles/test_walle.dir/src/detectpeople.cpp.o
+	$(MAKE) -f CMakeFiles/detectpeople.dir/build.make CMakeFiles/detectpeople.dir/src/detectpeople.cpp.o
 .PHONY : src/detectpeople.cpp.o
 
 src/detectpeople.i: src/detectpeople.cpp.i
@@ -464,7 +477,7 @@ src/detectpeople.i: src/detectpeople.cpp.i
 
 # target to preprocess a source file
 src/detectpeople.cpp.i:
-	$(MAKE) -f CMakeFiles/test_walle.dir/build.make CMakeFiles/test_walle.dir/src/detectpeople.cpp.i
+	$(MAKE) -f CMakeFiles/detectpeople.dir/build.make CMakeFiles/detectpeople.dir/src/detectpeople.cpp.i
 .PHONY : src/detectpeople.cpp.i
 
 src/detectpeople.s: src/detectpeople.cpp.s
@@ -472,8 +485,32 @@ src/detectpeople.s: src/detectpeople.cpp.s
 
 # target to generate assembly for a file
 src/detectpeople.cpp.s:
-	$(MAKE) -f CMakeFiles/test_walle.dir/build.make CMakeFiles/test_walle.dir/src/detectpeople.cpp.s
+	$(MAKE) -f CMakeFiles/detectpeople.dir/build.make CMakeFiles/detectpeople.dir/src/detectpeople.cpp.s
 .PHONY : src/detectpeople.cpp.s
+
+src/image_converter.o: src/image_converter.cpp.o
+.PHONY : src/image_converter.o
+
+# target to build an object file
+src/image_converter.cpp.o:
+	$(MAKE) -f CMakeFiles/image_converter.dir/build.make CMakeFiles/image_converter.dir/src/image_converter.cpp.o
+.PHONY : src/image_converter.cpp.o
+
+src/image_converter.i: src/image_converter.cpp.i
+.PHONY : src/image_converter.i
+
+# target to preprocess a source file
+src/image_converter.cpp.i:
+	$(MAKE) -f CMakeFiles/image_converter.dir/build.make CMakeFiles/image_converter.dir/src/image_converter.cpp.i
+.PHONY : src/image_converter.cpp.i
+
+src/image_converter.s: src/image_converter.cpp.s
+.PHONY : src/image_converter.s
+
+# target to generate assembly for a file
+src/image_converter.cpp.s:
+	$(MAKE) -f CMakeFiles/image_converter.dir/build.make CMakeFiles/image_converter.dir/src/image_converter.cpp.s
+.PHONY : src/image_converter.cpp.s
 
 # Help Target
 help:
@@ -488,8 +525,10 @@ help:
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... clean_test_results"
+	@echo "... detectpeople"
 	@echo "... doxygen"
 	@echo "... edit_cache"
+	@echo "... image_converter"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
@@ -507,13 +546,15 @@ help:
 	@echo "... test-future"
 	@echo "... test-results"
 	@echo "... test-results-run"
-	@echo "... test_walle"
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... src/detectpeople.o"
 	@echo "... src/detectpeople.i"
 	@echo "... src/detectpeople.s"
+	@echo "... src/image_converter.o"
+	@echo "... src/image_converter.i"
+	@echo "... src/image_converter.s"
 .PHONY : help
 
 
