@@ -83,14 +83,15 @@ def callback(data):
                source.dtype.itemsize * 3 * source.shape[1])
 
 def depth(data):
-    print type(data)
-
+    #print type(data)
+    pass
 
 def publisher():
+    face_num = 0
     global image
     rospy.init_node("face_location",anonymous = True)
-    rospy.Subscriber("/camera/rgb/image_color", Image, callback)
-    rospy.Subscriber("/camera/depth/image_raw", Image, depth)
+    #rospy.Subscriber("/camera/rgb/image_color", Image, callback)
+    rospy.Subscriber("/camera/depth/image_raw", Image, callback)
 
     faceCascade = cv.Load(HAAR_CASCADE_PATH + "haarcascades/haarcascade_frontalface_default.xml")
     #faceCascade = cv.Load(HAAR_CASCADE_PATH + "haarcascades/haarcascade_frontalface_alt2.xml")
@@ -110,7 +111,8 @@ def publisher():
                 if len(faces) != 0:
                     face_list = []
                     i = 0
-                    print "published face!"
+                    print "published face %d!" %face_num
+                    face_num += 1
                     while i < len(faces):
                         face = faces[i]        
                         #print "top face at:" + str(face.midx) + ", "+ str(face.midy)
