@@ -8,7 +8,7 @@ import serial
 
 #connect to kangaroo over serial
 #open at 9600 baud, 8 bits, N (no parity), 1 stop bit
-ser = serial.Serial(0) #open 1st serial port
+ser = serial.Serial(3) #open COM 4
 print ser.name		   #check which port was used
 
 #initialize motors
@@ -23,5 +23,8 @@ ser.write("T, 0")
 
 
 #Set motor loop
+ser.write("D, 300")
+ser.write("home")
+
 
 #return error code
