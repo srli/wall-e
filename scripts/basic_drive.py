@@ -12,7 +12,7 @@ ser = serial.Serial(3) #open COM 4
 print ser.name		   #check which port was used
 
 #initialize motors
-ser.write("T, start")
+ser.write("T, start \r\n")
 ser.write("D, start")
 #encoder count: 1 rotation for a 5" sprocket is 31.4in =79.75 cm
 ser.write("T, units 0.8 meters = 400 lines") 

@@ -12,18 +12,27 @@
 # print ser.name		   #check which port was used
 
 #initialize motors
-print("T, start")
-print("D, start")
+print("T, start \n")
+print("D, start \n")
 #encoder count: 1 rotation for a 5" sprocket is 31.4in =79.75 cm
-print("T, units 360 degrees = 1236 lines") 
-print("D, units 1596 in = 37500 lines")
+print("T, units 360 degrees = 1236 lines\n") 
+print("D, units 1596 in = 37500 lines\n")
 
-print("D, home")
-print("T, home")
+print("D, home\n")
+print("T, home\n")
+
 
 
 #Set motor loop
-print("D, 200")
+
+while True:
+	try:
+		drive = input('Enter speed command for Turn(T) or Drive(D) Channels')
+		print(drive)
+	except:
+	print("D,home \n")
+	print("T, home \n")
+	print("powerdown \n")
 
 
 #return error code
