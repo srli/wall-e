@@ -27,12 +27,13 @@ print("T, home\n")
 
 while True:
 	try:
-		drive = input('Enter speed command for Turn(T) or Drive(D) Channels')
-		print(drive)
-	except:
-	print("D,home \n")
-	print("T, home \n")
-	print("powerdown \n")
+		drive = raw_input("Enter speed command for Turn(T) or Drive(D) Channels")
+
+		print(drive +"\n")
+	except KeyboardInterrupt:
+		print("D, home \n")
+		print("T, home \n")
+		print("powerdown \n")
 
 
 #return error code
