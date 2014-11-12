@@ -17,8 +17,13 @@
 #include "XnVMultiProcessFlowClient.h"
 #include <XnVWaveDetector.h>
 
+//ROS headers
+#include <ros/ros.h>
+#include <stdlib.h>
+#include "std_msgs/String.h"
+
 // xml to initialize OpenNI
-#define SAMPLE_XML_FILE "../../../Data/Sample-Tracking.xml"
+#define SAMPLE_XML_FILE "Data/Sample-Tracking.xml"
 #define SAMPLE_XML_FILE_LOCAL "Sample-Tracking.xml"
 
 //-----------------------------------------------------------------------------
@@ -65,11 +70,22 @@ XnBool fileExists(const char *fn)
 
 // this sample can run either as a regular sample, or as a client for multi-process (remote mode)
 int main(int argc, char** argv)
-{
+{  	
+
+  //ros::Subscriber subcommand = rosnode.subscribe("/camera/rgb/image_color", 10, cameracallback);
+
+
+
+  	/*ros::Subscriber subcommand = rosnode.subscribe("/camera/depth_registered/image_raw", 10, cameracallback);
+  	printf("subscribe get\n");
+*/
 	xn::Context context;
 	xn::ScriptNode scriptNode;
 	XnVSessionGenerator* pSessionGenerator;
 	XnBool bRemoting = FALSE;
+
+	ros::init(argc, argv, "detect_people", ros::init_options::NoSigintHandler);
+  	ros::NodeHandle rosnode = ros::NodeHandle();
 
 	if (argc > 1)
 	{

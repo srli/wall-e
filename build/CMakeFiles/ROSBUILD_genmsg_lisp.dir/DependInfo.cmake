@@ -25,6 +25,9 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/opt/ros/indigo/include"
   "/usr/include/opencv"
   "../msg_gen/cpp/include"
+  "../nite/Include"
+  "../nite/Source/XnCommon"
+  "/usr/include/ni"
   "../include/walle"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

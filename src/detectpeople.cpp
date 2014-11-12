@@ -10,6 +10,9 @@
 */
 static int highestnum = 0;
 
+#define SAMPLE_XML_FILE "Data/Sample-Tracking.xml"
+#define SAMPLE_XML_FILE_LOCAL "Sample-Tracking.xml"
+
 void cameracallback(const sensor_msgs::Image &msg){
 	printf("hello\n");
   //std::cout << msg.height << std::endl;
@@ -26,6 +29,14 @@ void cameracallback(const sensor_msgs::Image &msg){
 
 }
 
+bool fileExists(const char *fn)
+{
+  bool exists;
+  xnOSDoesFileExist(fn, &exists);
+  return exists;
+}
+
+
 int main(int argc, char **argv)
 {
     ////////////////////////////////////////////////////
@@ -38,6 +49,13 @@ int main(int argc, char **argv)
 
   ros::Subscriber subcommand = rosnode.subscribe("/camera/depth_registered/image_raw", 10, cameracallback);
   printf("subscribe get\n");
+  
+  if      (fileExists(SAMPLE_XML_FILE)) printf("SAMPLE_XML_FILE");
+    else if (fileExists(SAMPLE_XML_FILE_LOCAL)) printf("SAMPLE_XML_FILE_LOCAL");
+    else {
+      printf("Could not find '%s' nor '%s'. Aborting.\n" , SAMPLE_XML_FILE, SAMPLE_XML_FILE_LOCAL);
+    }
+
   /*ros::Time last_ros_time_;
   bool wait = true;
   while (wait) {

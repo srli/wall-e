@@ -16,6 +16,13 @@
 // local header
 #include "PointDrawer.h"
 
+//ROS headers
+#include <ros/ros.h>
+#include <stdlib.h>
+#include "std_msgs/String.h"
+
+#include "opengles.h"
+
 #define CHECK_RC(rc, what)											\
 	if (rc != XN_STATUS_OK)											\
 	{																\

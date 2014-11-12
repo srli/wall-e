@@ -5,7 +5,7 @@
 /home/sophie/ROS/src/walle/build/CMakeFiles/ROSBUILD_gensrv_lisp.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/_catkin_empty_exported_target.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/clean_test_results.dir
-/home/sophie/ROS/src/walle/build/CMakeFiles/detectpeople.dir
+/home/sophie/ROS/src/walle/build/CMakeFiles/detectfinger.dir
 /home/sophie/ROS/src/walle/build/CMakeFiles/doxygen.dir
 /home/sophie/ROS/src/walle/build/gtest/CMakeFiles/gtest.dir
 /home/sophie/ROS/src/walle/build/gtest/CMakeFiles/gtest_main.dir

@@ -330,6 +330,9 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 //Path to a library.
 lib:FILEPATH=/opt/ros/indigo/lib/libroslib.so
 
+//The directory containing a CMake configuration file for libopenni.
+libopenni_DIR:PATH=libopenni_DIR-NOTFOUND
+
 //The directory containing a CMake configuration file for roslib.
 roslib_DIR:PATH=/opt/ros/indigo/share/roslib/cmake
 
@@ -524,7 +527,7 @@ PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
 _rosbuild_EXPORTS:INTERNAL=
-_rosbuild_cached_flag_time:INTERNAL=1412445716.93
+_rosbuild_cached_flag_time:INTERNAL=1414601555.51
 _roslang_LANGS:INTERNAL=roslisp
 _rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/indigo/share/genmsg/package.xml;/opt/ros/indigo/share/genpy/package.xml;/opt/ros/indigo/share/cpp_common/package.xml;/opt/ros/indigo/share/rostime/package.xml;/opt/ros/indigo/share/roscpp_traits/package.xml;/opt/ros/indigo/share/roscpp_serialization/package.xml;/opt/ros/indigo/share/message_runtime/package.xml;/opt/ros/indigo/share/catkin/package.xml;/opt/ros/indigo/share/gencpp/package.xml;/opt/ros/indigo/share/genlisp/package.xml;/opt/ros/indigo/share/message_generation/package.xml;/opt/ros/indigo/share/rosbuild/package.xml;/opt/ros/indigo/share/rosconsole/package.xml;/opt/ros/indigo/share/std_msgs/package.xml;/opt/ros/indigo/share/rosgraph_msgs/package.xml;/opt/ros/indigo/share/xmlrpcpp/package.xml;/opt/ros/indigo/share/roscpp/package.xml;/opt/ros/indigo/share/rosgraph/package.xml;/opt/ros/indigo/share/rospack/package.xml;/opt/ros/indigo/share/roslib/package.xml;/opt/ros/indigo/share/rospy/package.xml;/opt/ros/indigo/share/geometry_msgs/package.xml;/opt/ros/indigo/share/sensor_msgs/package.xml;/opt/ros/indigo/share/cv_bridge/package.xml;/opt/ros/indigo/share/message_filters/package.xml;/opt/ros/indigo/share/class_loader/package.xml;/opt/ros/indigo/share/pluginlib/package.xml;/opt/ros/indigo/share/image_transport/package.xml
 _rospack_msgsrv_gen_invoke_result:INTERNAL=

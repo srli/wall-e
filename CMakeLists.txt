@@ -12,12 +12,21 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #Generates defined messages
 rosbuild_genmsg()
 
+include_directories("nite/Include")
+include_directories("nite/Source/XnCommon")
+include_directories("/usr/include/ni")
 include_directories("${PROJECT_SOURCE_DIR}/include/walle")
 find_package(OpenCV)
 include_directories("${OpenCV_INCLUDE_DIRS}")
 
-rosbuild_add_executable(detectpeople src/detectpeople.cpp)
-  target_link_libraries(detectpeople ${OpenCV_LIBRARIES})
+rosbuild_add_executable(detectfinger nite/Samples/SingleControl/main.cpp)
+  target_link_libraries(detectfinger ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2)
+
+#rosbuild_add_executable(detectfingervisualizer nite/Samples/PointViewer/main.cpp nite/Samples/PointViewer/PointDrawer.cpp)
+#  target_link_libraries(detectfingervisualizer ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2 -lGL -lglut)
+
+#rosbuild_add_executable(detectpeople src/detectpeople.cpp)
+#  target_link_libraries(detectpeople ${OpenCV_LIBRARIES})
 
 rosbuild_add_executable(image_converter src/image_converter.cpp)
   target_link_libraries(image_converter ${OpenCV_LIBRARIES})

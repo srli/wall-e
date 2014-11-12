@@ -153,7 +153,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ROSBUILD_gensrv_lisp.dir/DependInfo.cmake"
   "CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake"
   "CMakeFiles/clean_test_results.dir/DependInfo.cmake"
-  "CMakeFiles/detectpeople.dir/DependInfo.cmake"
+  "CMakeFiles/detectfinger.dir/DependInfo.cmake"
   "CMakeFiles/doxygen.dir/DependInfo.cmake"
   "CMakeFiles/image_converter.dir/DependInfo.cmake"
   "CMakeFiles/rosbuild_clean-test-results.dir/DependInfo.cmake"

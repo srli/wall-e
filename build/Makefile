@@ -231,17 +231,17 @@ clean_test_results/fast:
 .PHONY : clean_test_results/fast
 
 #=============================================================================
-# Target rules for targets named detectpeople
+# Target rules for targets named detectfinger
 
 # Build rule for target.
-detectpeople: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 detectpeople
-.PHONY : detectpeople
+detectfinger: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 detectfinger
+.PHONY : detectfinger
 
 # fast build rule for target.
-detectpeople/fast:
-	$(MAKE) -f CMakeFiles/detectpeople.dir/build.make CMakeFiles/detectpeople.dir/build
-.PHONY : detectpeople/fast
+detectfinger/fast:
+	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/build
+.PHONY : detectfinger/fast
 
 #=============================================================================
 # Target rules for targets named doxygen
@@ -464,29 +464,29 @@ gtest_main/fast:
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
-src/detectpeople.o: src/detectpeople.cpp.o
-.PHONY : src/detectpeople.o
+nite/Samples/SingleControl/main.o: nite/Samples/SingleControl/main.cpp.o
+.PHONY : nite/Samples/SingleControl/main.o
 
 # target to build an object file
-src/detectpeople.cpp.o:
-	$(MAKE) -f CMakeFiles/detectpeople.dir/build.make CMakeFiles/detectpeople.dir/src/detectpeople.cpp.o
-.PHONY : src/detectpeople.cpp.o
+nite/Samples/SingleControl/main.cpp.o:
+	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/nite/Samples/SingleControl/main.cpp.o
+.PHONY : nite/Samples/SingleControl/main.cpp.o
 
-src/detectpeople.i: src/detectpeople.cpp.i
-.PHONY : src/detectpeople.i
+nite/Samples/SingleControl/main.i: nite/Samples/SingleControl/main.cpp.i
+.PHONY : nite/Samples/SingleControl/main.i
 
 # target to preprocess a source file
-src/detectpeople.cpp.i:
-	$(MAKE) -f CMakeFiles/detectpeople.dir/build.make CMakeFiles/detectpeople.dir/src/detectpeople.cpp.i
-.PHONY : src/detectpeople.cpp.i
+nite/Samples/SingleControl/main.cpp.i:
+	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/nite/Samples/SingleControl/main.cpp.i
+.PHONY : nite/Samples/SingleControl/main.cpp.i
 
-src/detectpeople.s: src/detectpeople.cpp.s
-.PHONY : src/detectpeople.s
+nite/Samples/SingleControl/main.s: nite/Samples/SingleControl/main.cpp.s
+.PHONY : nite/Samples/SingleControl/main.s
 
 # target to generate assembly for a file
-src/detectpeople.cpp.s:
-	$(MAKE) -f CMakeFiles/detectpeople.dir/build.make CMakeFiles/detectpeople.dir/src/detectpeople.cpp.s
-.PHONY : src/detectpeople.cpp.s
+nite/Samples/SingleControl/main.cpp.s:
+	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/nite/Samples/SingleControl/main.cpp.s
+.PHONY : nite/Samples/SingleControl/main.cpp.s
 
 src/image_converter.o: src/image_converter.cpp.o
 .PHONY : src/image_converter.o
@@ -525,7 +525,7 @@ help:
 	@echo "... ROSBUILD_gensrv_lisp"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... clean_test_results"
-	@echo "... detectpeople"
+	@echo "... detectfinger"
 	@echo "... doxygen"
 	@echo "... edit_cache"
 	@echo "... image_converter"
@@ -549,9 +549,9 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... src/detectpeople.o"
-	@echo "... src/detectpeople.i"
-	@echo "... src/detectpeople.s"
+	@echo "... nite/Samples/SingleControl/main.o"
+	@echo "... nite/Samples/SingleControl/main.i"
+	@echo "... nite/Samples/SingleControl/main.s"
 	@echo "... src/image_converter.o"
 	@echo "... src/image_converter.i"
 	@echo "... src/image_converter.s"
