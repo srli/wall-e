@@ -17,14 +17,14 @@ include_directories("nite/Source/XnCommon")
 include_directories("/usr/include/ni")
 include_directories("${PROJECT_SOURCE_DIR}/include/walle")
 find_package(OpenCV)
+find_package(OpenGL)
 include_directories("${OpenCV_INCLUDE_DIRS}")
 
-rosbuild_add_executable(detectfinger nite/Samples/SingleControl/main.cpp)
-  target_link_libraries(detectfinger ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2)
+rosbuild_add_executable(detectfinger src/SingleControl/main.cpp)
+	target_link_libraries(detectfinger ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2)
 
-#rosbuild_add_executable(detectfingervisualizer nite/Samples/PointViewer/main.cpp nite/Samples/PointViewer/PointDrawer.cpp)
-#  target_link_libraries(detectfingervisualizer ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2 -lGL -lglut)
-
+#rosbuild_add_executable(detectfingerviewer src/PointViewer/main.cpp src/PointViewer/PointDrawer.cpp)
+#	target_link_libraries(detectfingerviewer ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2 -lGL -lGLU glut64)#-lGL -lGLU) # glut64) #/usr/lib/x86_64-linux-gnu/libglut.a /usr/lib/x86_64-linux-gnu/libGL.a)
 #rosbuild_add_executable(detectpeople src/detectpeople.cpp)
 #  target_link_libraries(detectpeople ${OpenCV_LIBRARIES})
 

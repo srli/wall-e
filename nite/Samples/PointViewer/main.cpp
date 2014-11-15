@@ -139,6 +139,7 @@ void XN_CALLBACK_TYPE MyGestureReady(xn::GestureGenerator& generator, const XnCh
 // this function is called each frame
 void glutDisplay (void)
 {
+	printf("glutdisplay\n");
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -254,10 +255,11 @@ void XN_CALLBACK_TYPE GestureProgressHandler(xn::GestureGenerator& generator, co
 
 
 // xml to initialize OpenNI
-#define SAMPLE_XML_PATH "../../../Data/Sample-Tracking.xml"
+#define SAMPLE_XML_PATH "Data/Sample-Tracking.xml"
 
 int main(int argc, char ** argv)
 {
+	printf("in mainloop\n");
 	XnStatus rc = XN_STATUS_OK;
 	xn::EnumerationErrors errors;
 
@@ -284,7 +286,7 @@ int main(int argc, char ** argv)
 	g_GestureGenerator.RegisterToGestureReadyForNextIntermediateStage(GestureReadyForNextIntermediateStageHandler, NULL, hGestureReadyForNextIntermediateStage);
 	g_GestureGenerator.RegisterGestureCallbacks(NULL, GestureProgressHandler, NULL, hGestureProgress);
 
-
+	printf("creating nite objects\n");
 	// Create NITE objects
 	g_pSessionManager = new XnVSessionManager;
 	rc = g_pSessionManager->Initialize(&g_Context, "Click,Wave", "RaiseHand");

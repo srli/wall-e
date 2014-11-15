@@ -464,29 +464,29 @@ gtest_main/fast:
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
-nite/Samples/SingleControl/main.o: nite/Samples/SingleControl/main.cpp.o
-.PHONY : nite/Samples/SingleControl/main.o
+src/SingleControl/main.o: src/SingleControl/main.cpp.o
+.PHONY : src/SingleControl/main.o
 
 # target to build an object file
-nite/Samples/SingleControl/main.cpp.o:
-	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/nite/Samples/SingleControl/main.cpp.o
-.PHONY : nite/Samples/SingleControl/main.cpp.o
+src/SingleControl/main.cpp.o:
+	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/src/SingleControl/main.cpp.o
+.PHONY : src/SingleControl/main.cpp.o
 
-nite/Samples/SingleControl/main.i: nite/Samples/SingleControl/main.cpp.i
-.PHONY : nite/Samples/SingleControl/main.i
+src/SingleControl/main.i: src/SingleControl/main.cpp.i
+.PHONY : src/SingleControl/main.i
 
 # target to preprocess a source file
-nite/Samples/SingleControl/main.cpp.i:
-	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/nite/Samples/SingleControl/main.cpp.i
-.PHONY : nite/Samples/SingleControl/main.cpp.i
+src/SingleControl/main.cpp.i:
+	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/src/SingleControl/main.cpp.i
+.PHONY : src/SingleControl/main.cpp.i
 
-nite/Samples/SingleControl/main.s: nite/Samples/SingleControl/main.cpp.s
-.PHONY : nite/Samples/SingleControl/main.s
+src/SingleControl/main.s: src/SingleControl/main.cpp.s
+.PHONY : src/SingleControl/main.s
 
 # target to generate assembly for a file
-nite/Samples/SingleControl/main.cpp.s:
-	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/nite/Samples/SingleControl/main.cpp.s
-.PHONY : nite/Samples/SingleControl/main.cpp.s
+src/SingleControl/main.cpp.s:
+	$(MAKE) -f CMakeFiles/detectfinger.dir/build.make CMakeFiles/detectfinger.dir/src/SingleControl/main.cpp.s
+.PHONY : src/SingleControl/main.cpp.s
 
 src/image_converter.o: src/image_converter.cpp.o
 .PHONY : src/image_converter.o
@@ -549,9 +549,9 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... nite/Samples/SingleControl/main.o"
-	@echo "... nite/Samples/SingleControl/main.i"
-	@echo "... nite/Samples/SingleControl/main.s"
+	@echo "... src/SingleControl/main.o"
+	@echo "... src/SingleControl/main.i"
+	@echo "... src/SingleControl/main.s"
 	@echo "... src/image_converter.o"
 	@echo "... src/image_converter.i"
 	@echo "... src/image_converter.s"
