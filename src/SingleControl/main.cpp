@@ -26,6 +26,10 @@
 #define SAMPLE_XML_FILE "Data/Sample-Tracking.xml"
 #define SAMPLE_XML_FILE_LOCAL "Sample-Tracking.xml"
 
+int xpos;
+int ypos;
+int zpos;
+
 //-----------------------------------------------------------------------------
 // Callbacks
 //-----------------------------------------------------------------------------
@@ -55,6 +59,7 @@ void XN_CALLBACK_TYPE OnPointUpdate(const XnVHandPointContext* pContext, void* c
 {
 //	rospub(pContext);
 	printf("%d: (%f,%f,%f) [%f]\n", pContext->nID, pContext->ptPosition.X, pContext->ptPosition.Y, pContext->ptPosition.Z, pContext->fTime);
+	xpos = pContext->ptPosition.X;
 }
 
 
@@ -166,7 +171,13 @@ int main(int argc, char** argv)
 		{
 			context.WaitAnyUpdateAll();
 			((XnVSessionManager*)pSessionGenerator)->Update(&context);
-			//std::cout << "hello" << std::endl;
+			std::cout << xpos << std::endl;
+
+			//string String = static_cast<ostringstream*>( &(ostringstream() << xpos) )->str();
+/*			msg = String;
+			pub.publish(msg);
+			ros::spinOnce();*/
+			//std::cout << pContext->ptPosition.Y << std::endl;
 		}
 	}
 
