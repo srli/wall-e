@@ -16,6 +16,8 @@ void setup()
  
 void loop() 
 { 
+  myservo1.writeMicroseconds(1500);  //stop
+  myservo2.writeMicroseconds(1500);  //stop 
   myservo1.writeMicroseconds(1250);  //full forward
   myservo2.writeMicroseconds(1750);  //full reverse
   delay(2000);
