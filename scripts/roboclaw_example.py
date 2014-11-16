@@ -591,7 +591,7 @@ print "Roboclaw Example 1\r\n"
 #port = serial.Serial("/dev/ttyACM0", baudrate=115200, timeout=0.1)
 
 #Windows Serial instance example
-port = serial.Serial("COM126", baudrate=38400, timeout=1)
+port = serial.Serial("COM7", baudrate=38400, timeout=1)
 
 #Get version string
 sendcommand(128,21);
