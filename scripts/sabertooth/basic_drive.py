@@ -33,5 +33,6 @@ while True:
 		ser.write("D, home \n")
 		ser.write("T, home \n")
 		ser.write("powerdown \n")
+		ser.close()
 
 #return error code
