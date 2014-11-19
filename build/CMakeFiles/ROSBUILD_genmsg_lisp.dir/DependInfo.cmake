@@ -12,6 +12,7 @@ SET(CMAKE_TARGET_DEFINITIONS
 SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/sophie/ROS/src/walle/msg_gen/lisp/_package.lisp" "/home/sophie/ROS/src/walle/msg_gen/lisp/HRI.lisp"
   "/home/sophie/ROS/src/walle/msg_gen/lisp/_package_HRI.lisp" "/home/sophie/ROS/src/walle/msg_gen/lisp/HRI.lisp"
+  "/home/sophie/ROS/src/walle/msg_gen/lisp/_package_pointerpos.lisp" "/home/sophie/ROS/src/walle/msg_gen/lisp/pointerpos.lisp"
   )
 
 

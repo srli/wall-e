@@ -3,5 +3,7 @@
   (:export
    "<HRI>"
    "HRI"
+   "<POINTERPOS>"
+   "POINTERPOS"
   ))
 

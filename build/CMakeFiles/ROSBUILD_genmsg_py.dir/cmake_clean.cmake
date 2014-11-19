@@ -5,6 +5,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/ROSBUILD_genmsg_py"
   "../src/walle/msg/__init__.py"
   "../src/walle/msg/_HRI.py"
+  "../src/walle/msg/_pointerpos.py"
 )
 
 # Per-language clean rules from dependency scanning.

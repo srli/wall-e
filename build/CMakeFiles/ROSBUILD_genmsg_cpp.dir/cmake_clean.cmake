@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "../src/walle/msg"
   "CMakeFiles/ROSBUILD_genmsg_cpp"
   "../msg_gen/cpp/include/walle/HRI.h"
+  "../msg_gen/cpp/include/walle/pointerpos.h"
 )
 
 # Per-language clean rules from dependency scanning.

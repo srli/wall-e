@@ -21,6 +21,9 @@
 #include <ros/ros.h>
 #include <stdlib.h>
 #include "std_msgs/String.h"
+#include <walle/pointerpos.h>
+
+#include <sstream>
 
 // xml to initialize OpenNI
 #define SAMPLE_XML_FILE "Data/Sample-Tracking.xml"
@@ -57,9 +60,14 @@ void XN_CALLBACK_TYPE OnWaveCB(void* cxt)
 // callback for a new position of any hand
 void XN_CALLBACK_TYPE OnPointUpdate(const XnVHandPointContext* pContext, void* cxt)
 {
+	//std::stringstream ss;
+	//ss <<  pContext->nID << ": (" << pContext->ptPosition.X << ", " << pContext->ptPosition.Y << ", " << pContext->ptPosition.Z;
+	//msg.data = ss.str();
 //	rospub(pContext);
 	printf("%d: (%f,%f,%f) [%f]\n", pContext->nID, pContext->ptPosition.X, pContext->ptPosition.Y, pContext->ptPosition.Z, pContext->fTime);
 	xpos = pContext->ptPosition.X;
+	ypos = pContext->ptPosition.Y;
+	zpos = pContext->ptPosition.Z;
 }
 
 
@@ -79,24 +87,12 @@ XnBool fileExists(const char *fn)
 // this sample can run either as a regular sample, or as a client for multi-process (remote mode)
 int main(int argc, char** argv)
 {  	
-
-  //ros::Subscriber subcommand = rosnode.subscribe("/camera/rgb/image_color", 10, cameracallback);
-
-
-
-  	/*ros::Subscriber subcommand = rosnode.subscribe("/camera/depth_registered/image_raw", 10, cameracallback);
-  	printf("subscribe get\n");
-*/
 	xn::Context context;
 	xn::ScriptNode scriptNode;
 	XnVSessionGenerator* pSessionGenerator;
 	XnBool bRemoting = FALSE;
 
-	ros::init(argc, argv, "pointcontrol", ros::init_options::NoSigintHandler);
-  	ros::NodeHandle rosnode = ros::NodeHandle();
 
-  	ros::Publisher pub = rosnode.advertise<std_msgs::String>("point_location", 10);
-  	std_msgs::String msg;
 
 	if (argc > 1)
 	{
@@ -160,6 +156,15 @@ int main(int argc, char** argv)
 	printf("Please perform focus gesture to start session\n");
 	printf("Hit any key to exit\n");
 
+
+	//INITIALIZING ROSNODE
+	ros::init(argc, argv, "pointcontrol", ros::init_options::NoSigintHandler);
+  	ros::NodeHandle rosnode = ros::NodeHandle();
+
+  	ros::Publisher pub = rosnode.advertise<walle::pointerpos>("point_location", 10);
+  	walle::pointerpos msg;
+
+
 	// Main loop
 	while (!xnOSWasKeyboardHit())
 	{
@@ -171,12 +176,17 @@ int main(int argc, char** argv)
 		{
 			context.WaitAnyUpdateAll();
 			((XnVSessionManager*)pSessionGenerator)->Update(&context);
-			std::cout << xpos << std::endl;
+			//std::cout << xpos << std::endl;
 
 			//string String = static_cast<ostringstream*>( &(ostringstream() << xpos) )->str();
-/*			msg = String;
+			//msg = String;
+			
+			msg.positions.push_back(xpos);
+			msg.positions.push_back(ypos);
+			msg.positions.push_back(zpos);
+
 			pub.publish(msg);
-			ros::spinOnce();*/
+			ros::spinOnce();
 			//std::cout << pContext->ptPosition.Y << std::endl;
 		}
 	}
