@@ -1,18 +1,27 @@
 #include "BMSerial.h"
 
-//Arduino Due only supports using hardware uarts, pins 0/1, 14/15, 16/17 or 18/19.
+//Standard serial command syntax:
+/* one byte controls both motors, so 
+1 to 127 : channel 1 (1 = full reverse, 64 = neutral, 127 = full fwd)
+128 to 255 : channel 2 (128 = full rev, 192 = neutral, 255 = full fwd)
 
-BMSerial mySerial(10,11);
+Ensure Roboclaw is on mode 5, option 4
+
+Plug in S1 on robo claw into UART TX (pin 0 is RX, 1 is TX on Arduino)
+Connect the 5V and GND from the microcontroller to the roboclaw.
+
+*/
+BMSerial serialcomm(0,1); //connect to RX and TX pins
 
 void setup() {
-  mySerial.begin(38400);
+  serialcomm.begin(38400); //set baud rate
 }
 
 void loop() {
-  mySerial.write(1);
-  mySerial.write(-1);
+  serialcomm.write(1);
+  serialcomm.write(-1);
   delay(2000);
-  mySerial.write(127);
-  mySerial.write(-127);
+  serialcomm.write(127);
+  serialcomm.write(-127);
   delay(2000);
 }

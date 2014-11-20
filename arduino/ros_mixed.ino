@@ -37,9 +37,10 @@ std_msgs::String driveFeedback; //driveFeedback will tell main computer what's g
 std_msgs::String enc_vals; //create string w name "enc_vals" for odom feedback
 ros::Publisher enc_vals("enc_vals", &driveCmd); //created publisher w topic name "enc_vals"
 ros::Publisher lowlevelstate("lowlevelstate", &driveFeedback); 
-ros::Subscriber<std_msgs::Empty> sub(/cmd_vel, &drivecmd_Cb); //create subscriber w topic to subscribe to and callback function it uses
+ros::Subscriber<std_msgs::Empty> sub(/cmd_dir, &drivecmd_Cb); //create subscriber w topic to subscribe to and callback function it uses
 
 //create callback function for subscriber
+//mixed mode requires drive and turn command
 void drivecmd_Cb(const std_msgs::String& driveCmd){
 	cmd = driveCmd.cmd;
 	if (cmd == "front"){
@@ -47,12 +48,12 @@ void drivecmd_Cb(const std_msgs::String& driveCmd){
 		roboclaw.ForwardMixed(address, 20); 
 		delay(2000);
 	}
-	else if (cmd == "left"){
+	else if (cmd == "left"){ //left + go forward
 		driveFeedback.cmd = "arduino.drivecmd_Cb: received /driveCmd left";
 		roboclaw.LeftrightMixed(address, 54);
 		delay(2000);
 	}
-	else if (cmd == "right"){
+	else if (cmd == "right"){ //right + go forward
 		driveFeedback.cmd = "arduino.drivecmd_Cb: received /driveCmd right";
 		roboclaw.LeftrightMixed(address, 74);
 		delay(2000);
@@ -72,7 +73,7 @@ void setup() {
   nh.subscribe(sub) //subscribe to topics to listen to
 }
 
-void loop() {
+void main() {
   driveCmd.data = hello;
   enc_vals.publish(&driveCmd);
   nh.spinOnce();
