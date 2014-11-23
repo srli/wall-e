@@ -29,11 +29,11 @@ void loop(){
       break;
     case 'j':
       Serial.println("left");
-      turn.writeMicroseconds(1375);
+      turn.writeMicroseconds(1350);
       break;
     case 'l':
       Serial.println("right");
-      turn.writeMicroseconds(1600);
+      turn.writeMicroseconds(1585);
       break;
     case 'k':
       Serial.print("stop");
