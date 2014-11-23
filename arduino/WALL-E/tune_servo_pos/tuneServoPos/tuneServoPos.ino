@@ -18,14 +18,17 @@ void loop() {
         switch(inByte){
         case 'i':
             pos +=1;
+            Serial.println("increment");
             break;
         case 'l':
             pos -=1;
+            Serial.println("decrement");
             break;
         default:
             pos = 90;
-            
-
+            Serial.println("neutral");
         }
+        rArm.write(pos);
+        Serial.print(pos);
     }
 }
