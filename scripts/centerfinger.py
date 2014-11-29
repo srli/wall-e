@@ -11,13 +11,13 @@ def callback(data):
 	xposition = int(data.positions)
 	print xposition
 	if xposition > 20:
-		message = 12
+		message = 74
 		return
 	if xposition < -20:
-		message = 14
+		message = 76
 		return
 	else:
-		message = 16
+		message = 75
 
 def publisher():
     rospy.init_node("centerfinger", anonymous = True)
@@ -30,5 +30,5 @@ def publisher():
  		r.sleep()
        
 if __name__ == "__main__":
-	message = 10
+	message = 75
    	publisher()
