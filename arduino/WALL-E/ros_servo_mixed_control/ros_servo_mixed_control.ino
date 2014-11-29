@@ -9,7 +9,7 @@ Uses ROSserial to commuicate
 
 #include <Servo.h>
 #include <ros.h>
-#include <std_msgs/Char.h>
+#include <std_msgs/Int16.h>
 #include <std_msgs/String.h>
 
 ros::NodeHandle nh; //init rosNode 
