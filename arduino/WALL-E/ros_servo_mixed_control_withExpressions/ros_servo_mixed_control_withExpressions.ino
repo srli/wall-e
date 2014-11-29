@@ -32,7 +32,9 @@ char waiting[8]  = "waiting";
 char left[5]     = "left";
 char right[6]    = "right";
 char stopped[5]  = "stop";
-
+char happy[6]    = "happy";
+char sad[4]      = "sad";
+char whoa[5]     = "whoa";
 void motor_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
   //inByte =(cmd_msg.data); //get command to put into state machine 
       //state machine that responds to char recieved
@@ -40,19 +42,19 @@ void motor_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
     //eg. 'a'=97
   switch(cmd_msg.data){
   case 72: //'h' = 72
-    Serial.println("happy");
+    str_msg.data = happy;
     rEye.write(105,40,false);
     lEye.write(69,40,false);
     huh.write(90,35,true);
     break;
   case 77: // 'm' = 77
-    Serial.println("sad");
+    str_msg.data = sad;
     rEye.write(92,15,false);
     lEye.write(86,15,false);
     huh.write(90,10,true);
     break;
   case 78: // 'n' = 78
-    Serial.println("whoa");
+    str_msg.data = whoa;
     rEye.write(130,25,false);
     lEye.write(53,25,true);
     break;
