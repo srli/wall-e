@@ -24,21 +24,26 @@ struct pointerpos_ {
 
   pointerpos_()
   : Header()
-  , positions()
+  , positions(0)
+  , servo(0)
   {
   }
 
   pointerpos_(const ContainerAllocator& _alloc)
   : Header(_alloc)
-  , positions(_alloc)
+  , positions(0)
+  , servo(0)
   {
   }
 
   typedef  ::std_msgs::Header_<ContainerAllocator>  _Header_type;
    ::std_msgs::Header_<ContainerAllocator>  Header;
 
-  typedef std::vector<int32_t, typename ContainerAllocator::template rebind<int32_t>::other >  _positions_type;
-  std::vector<int32_t, typename ContainerAllocator::template rebind<int32_t>::other >  positions;
+  typedef int32_t _positions_type;
+  int32_t positions;
+
+  typedef int32_t _servo_type;
+  int32_t servo;
 
 
   typedef boost::shared_ptr< ::walle::pointerpos_<ContainerAllocator> > Ptr;
@@ -68,12 +73,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::walle::pointerpos_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "c0505cb48a2f04037f8e3e7c6d91b61f";
+    return "98ec36567cc0e5a0b0597d256973a689";
   }
 
   static const char* value(const  ::walle::pointerpos_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0xc0505cb48a2f0403ULL;
-  static const uint64_t static_value2 = 0x7f8e3e7c6d91b61fULL;
+  static const uint64_t static_value1 = 0x98ec36567cc0e5a0ULL;
+  static const uint64_t static_value2 = 0xb0597d256973a689ULL;
 };
 
 template<class ContainerAllocator>
@@ -92,7 +97,8 @@ struct Definition< ::walle::pointerpos_<ContainerAllocator> > {
   {
     return "Header Header\n\
 \n\
-int32[] positions\n\
+int32 positions\n\
+int32 servo\n\
 ================================================================================\n\
 MSG: std_msgs/Header\n\
 # Standard metadata for higher-level stamped data types.\n\
@@ -131,6 +137,7 @@ template<class ContainerAllocator> struct Serializer< ::walle::pointerpos_<Conta
   {
     stream.next(m.Header);
     stream.next(m.positions);
+    stream.next(m.servo);
   }
 
   ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -151,12 +158,10 @@ struct Printer< ::walle::pointerpos_<ContainerAllocator> >
     s << indent << "Header: ";
 s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.Header);
-    s << indent << "positions[]" << std::endl;
-    for (size_t i = 0; i < v.positions.size(); ++i)
-    {
-      s << indent << "  positions[" << i << "]: ";
-      Printer<int32_t>::stream(s, indent + "  ", v.positions[i]);
-    }
+    s << indent << "positions: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.positions);
+    s << indent << "servo: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.servo);
   }
 };
 

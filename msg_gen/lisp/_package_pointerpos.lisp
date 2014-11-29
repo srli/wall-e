@@ -3,4 +3,6 @@
           HEADER
           POSITIONS-VAL
           POSITIONS
+          SERVO-VAL
+          SERVO
 ))

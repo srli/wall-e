@@ -11,6 +11,8 @@ VarSpeedServo drive;
 VarSpeedServo turn;
 
 int pos = 0;    // variable to store the servo position 
+int ultrasonicsensorPin = A0;
+int sensorValue = 0;
 
 void setup(){
   Serial.begin(9600); //setup serial comms
@@ -30,6 +32,8 @@ void setup(){
 }
 
 void loop(){
+  sensorValue = analogRead(ultrasonicsensorPin);
+  Serial.println(sensorValue);
   if (Serial.available() > 0){
     int inByte = Serial.read();
     //state machine that responds to char recieved

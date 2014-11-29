@@ -23,8 +23,12 @@ include_directories("${OpenCV_INCLUDE_DIRS}")
 rosbuild_add_executable(detectfinger src/SingleControl/main.cpp)
 	target_link_libraries(detectfinger ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2)
 
+#rosbuild_add_executable(sceneanalysis src/SceneAnalysis/main.cpp src/SceneAnalysis/SceneDrawer.cpp src/SceneAnalysis/signal_catch.cpp src/SceneAnalysis/opengles.cpp src/SceneAnalysis/kbhit.cpp)
+#	target_link_libraries(sceneanalysis ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2 -lGL -lGLU glut64 /usr/lib/x86_64-linux-gnu/libglut.a /usr/lib/x86_64-linux-gnu/libGL.a)
+
+
 #rosbuild_add_executable(detectfingerviewer src/PointViewer/main.cpp src/PointViewer/PointDrawer.cpp)
-#	target_link_libraries(detectfingerviewer ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2 -lGL -lGLU glut64)#-lGL -lGLU) # glut64) #/usr/lib/x86_64-linux-gnu/libglut.a /usr/lib/x86_64-linux-gnu/libGL.a)
+#	target_link_libraries(detectfingerviewer ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2 -lGL -lGLU)#-lGL -lGLU) # glut64) #/usr/lib/x86_64-linux-gnu/libglut.a /usr/lib/x86_64-linux-gnu/libGL.a)
 #rosbuild_add_executable(detectpeople src/detectpeople.cpp)
 #  target_link_libraries(detectpeople ${OpenCV_LIBRARIES})
 
