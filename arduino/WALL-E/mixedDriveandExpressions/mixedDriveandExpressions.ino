@@ -14,10 +14,10 @@ int pos = 0;    // variable to store the servo position
 
 void setup(){
   Serial.begin(9600); //setup serial comms
-  drive.attach(5);  // attaches the RC signal on pin 5 to S1 
-  turn.attach(6);  // attaches the RC signal on pin 6 to S2 
-  drive.write(90,100,false);
-  turn.write(90,100,false);
+  drive.attach(5);  // Fwd/back motion controlled by pin 5 to S1 
+  turn.attach(6);  // turning motion controlled by pin 6 to S2 
+  drive.writeMicroseconds(1500); //initialize drive
+  turn.writeMicroseconds(1500); //init turn
   rEye.attach(2);
   rEye.write(105,40,false); //set init pos at slow speed, running in background
   lEye.attach(3);
@@ -37,44 +37,44 @@ void loop(){
     //eg. 'a'=97
     switch(inByte){
     case 'h':
+      Serial.println("happy");
       rEye.write(105,40,false);
       lEye.write(69,40,false);
       huh.write(90,35,true);
-      Serial.println("happy");
       break;
     case 'm':
+      Serial.println("sad");
       rEye.write(92,15,false);
       lEye.write(86,15,false);
       huh.write(90,10,true);
-      Serial.println("sad");
       break;
     case 'n':
+      Serial.println("whoa");
       rEye.write(130,25,false);
       lEye.write(53,25,true);
-      Serial.println("whoa");
       break;
     case 'i':
       Serial.println("forwards");
-      drive.write(120,75,true);
-      turn.write(90,75, true);
+      drive.writeMicroseconds(1350);
+      turn.writeMicroseconds(1500);
       break;
     case 'j':
       Serial.println("left");
-      turn.write(120,50,true);
+      turn.writeMicroseconds(1350);
       break;
     case 'l':
       Serial.println("right");
-      turn.write(35,45, true);
+      turn.writeMicroseconds(1585);
       break;
     case 'k':
       Serial.print("stop");
-      turn.write(90);
-      drive.write(90);
+      turn.writeMicroseconds(1500);
+      drive.writeMicroseconds(1500);
       break;
     default:
       Serial.println("waiting");
-      //turn.writeMicroseconds(1500);
-      drive.write(90);
+      turn.writeMicroseconds(1500);
+      drive.writeMicroseconds(1500);
       rEye.write(105,45,false); 
       lEye.write(69,45,false);
       huh.write(54,25,true); 

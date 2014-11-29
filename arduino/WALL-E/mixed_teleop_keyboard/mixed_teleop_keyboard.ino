@@ -1,5 +1,8 @@
 /* switch statement with serial input
-Open serial monitor and send i,k,j,l to move the robot.
+Open serial monitor and send i,k,j,l to move the robot. 
+send m,n,h to control facial expressions
+
+uses VarSpeedServo, which sets speeds as: Speed 1 = slowest, speed 255  = fastest)
 */
 #include <Servo.h>
 Servo drive;  // create servo object to control Drive (S1)
