@@ -9,7 +9,7 @@ Uses ROSserial to commuicate
 
 #include <Servo.h>
 #include <ros.h>
-#include <std_msgs/Char.h>
+#include <std_msgs/Int16.h>
 #include <std_msgs/String.h>
 
 ros::NodeHandle nh; //init rosNode 
@@ -30,12 +30,13 @@ char left[5]     = "left";
 char right[6]    = "right";
 char stopped[5]  = "stop";
 
-void motor_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
+void motor_cb(const std_msgs::Int16& cmd_msg){ //ROS callback funct
   //inByte =(cmd_msg.data); //get command to put into state machine 
       //state machine that responds to char recieved
     //single quotes tell controller to get ASCII value
     //eg. 'a'=97
   switch(cmd_msg.data){
+  Serial.println(cmd_msg.data);
   case 73: //val of 'i' is 73
     str_msg.data = forwards;
     drive.writeMicroseconds(1350);
@@ -62,7 +63,7 @@ void motor_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
   }
 }
 
-ros::Subscriber<std_msgs::Char> sub("motor", motor_cb);
+ros::Subscriber<std_msgs::Int16> sub("/motors", motor_cb);
 
 void setup(){
   nh.initNode();
