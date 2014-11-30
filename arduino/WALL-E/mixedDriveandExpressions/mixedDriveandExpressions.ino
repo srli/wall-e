@@ -34,7 +34,7 @@ void setup(){
 void loop(){
   sensorValue = analogRead(ultrasonicsensorPin);
   Serial.println(sensorValue);
-  if (Serial.available() > 0){
+  if (Serial.available() > 0 && sensorValue < 70){
     int inByte = Serial.read();
     //state machine that responds to char recieved
     //single quotes tell controller to get ASCII value
@@ -85,5 +85,11 @@ void loop(){
       
     }
   }
+  else
+  {
+  turn.writeMicroseconds(1500);
+  drive.writeMicroseconds(1500);
+  }
+
 }
 
