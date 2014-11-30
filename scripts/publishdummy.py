@@ -1,4 +1,10 @@
 #!/usr/bin/python
+"""Before running, be sure you have the rosserial_python library.
+You'll then need to run the serial node after running the 
+rosserial program on the arduino. 
+$rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0
+"""
+
 import roslib; roslib.load_manifest('walle')
 import rospy
 from std_msgs.msg import String

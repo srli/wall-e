@@ -27,6 +27,9 @@ int pos = 0;    // variable to store the servo position
 char inByte;    //init inByte
 
 //init all the strings to be published in the state machine
+//strings are not stored inside a message instance; instead an unsigned char is stored
+//so when publishing, you must store the string data elsewhere and set the pointer
+//this is what we're doing below.
 char forwards[9] = "forwards";
 char waiting[8]  = "waiting";
 char left[5]     = "left";
