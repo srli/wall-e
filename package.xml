@@ -56,6 +56,9 @@
 <build_depend>roslib</build_depend>
 <build_depend>tf</build_depend>
 
+<build_depend>glut</build_depend>
+<build_depend>libxmu-dev</build_depend>
+<build_depend>libxi-dev</build_depend>
 
   <run_depend>roscpp</run_depend>
   <run_depend>rospy</run_depend>
@@ -74,7 +77,9 @@
 <run_depend>tf</run_depend>
 
 
-
+<run_depend>glut</run_depend>
+<run_depend>libxmu-dev</run_depend>
+<run_depend>libxi-dev</run_depend>
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- You can specify that this package is a metapackage here: -->
