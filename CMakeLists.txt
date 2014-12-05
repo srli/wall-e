@@ -19,6 +19,8 @@ find_package(catkin REQUIRED COMPONENTS geometry_msgs
 find_package(PkgConfig)
 pkg_check_modules(OpenNI REQUIRED libopenni)
 
+#Find GLUT
+find_package(GLUT REQUIRED)
 
 add_message_files(
 	FILES
@@ -33,16 +35,14 @@ generate_messages(
 )
 
 catkin_package(
-	CATKIN_DEPENDS message_runtime std_msgs sensor_msgs
-
-)
+	CATKIN_DEPENDS message_runtime std_msgs sensor_msgs)
 
 include_directories(${catkin_INCLUDEDIR}
 		    ${OpenNI_INCLUDEDIR}
 		    ${orocos_kdl_INCLUDE_DIRS}
 		    ${OpenCV_INCLUDE_DIRS}
 		    ${OpenGL_INCLUDE_DIRS}
-)
+		    ${GLUT_LIBRARIES})
 
 
 include_directories("nite/Include")
@@ -50,7 +50,10 @@ include_directories("nite/Source/XnCommon")
 include_directories("${PROJECT_SOURCE_DIR}/include/walle")
 
 link_directories(${catkin_LIBRARY_DIRS})
-link_directories(${orocos_kdl_LIBRARY_DIRS})
+link_directories(${orocos_kdl_LIBRARY_DIRS}
+		 ${GLUT_LIBRARIES}
+)
+
 
 add_executable(detectfinger src/SingleControl/main.cpp)
 add_dependencies(detectfinger geometry_msgs_gencpp)
@@ -58,6 +61,19 @@ target_link_libraries(detectfinger ${catkin_LIBRARIES}
 				   ${OpenNI_LIBRARIES}
 				   ${orocos_kdl_LIBRARIES}
 				   ${OpenGL_INCLUDE_DIRS} -lXnVNite_1_5_2)
+
+#add_executable(viewer src/PointViewer/main.cpp 
+#			src/PointViewer/kbhit.cpp
+#			src/PointViewer/opengles.cpp
+#			src/PointViewer/signal_catch.cpp)
+
+#add_dependencies(viewer geometry_msgs_gencpp)
+#target_link_libraries(viewer ${catkin_LIBRARIES}
+#				   ${OpenNI_LIBRARIES}
+#				   ${orocos_kdl_LIBRARIES}
+#				   ${OpenGL_INCLUDE_DIRS} 
+#				   ${GLUT_LIBRARIES}
+#				   -lXnVNite_1_5_2)
 
 install(TARGETS detectfinger
 	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
