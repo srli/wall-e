@@ -1,36 +1,69 @@
 cmake_minimum_required(VERSION 2.8.3)
+
 project(walle)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
-rosbuild_init()
+find_package(orocos_kdl REQUIRED)
+find_package(catkin REQUIRED COMPONENTS geometry_msgs
+					roscpp
+					roslib
+					tf
+					rospy
+					std_msgs
+					sensor_msgs
+					cv_bridge
+					image_transport
+					message_generation
+					)
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+# Find OpenNI
+find_package(PkgConfig)
+pkg_check_modules(OpenNI REQUIRED libopenni)
 
-#Generates defined messages
-rosbuild_genmsg()
+
+add_message_files(
+	FILES
+	pointerpos.msg
+)
+
+generate_messages(
+	DEPENDENCIES
+	geometry_msgs
+	std_msgs
+	sensor_msgs
+)
+
+catkin_package(
+	CATKIN_DEPENDS message_runtime std_msgs sensor_msgs
+
+)
+
+include_directories(${catkin_INCLUDEDIR}
+		    ${OpenNI_INCLUDEDIR}
+		    ${orocos_kdl_INCLUDE_DIRS}
+		    ${OpenCV_INCLUDE_DIRS}
+		    ${OpenGL_INCLUDE_DIRS}
+)
+
 
 include_directories("nite/Include")
 include_directories("nite/Source/XnCommon")
-include_directories("/usr/include/ni")
 include_directories("${PROJECT_SOURCE_DIR}/include/walle")
-find_package(OpenCV)
-find_package(OpenGL)
-include_directories("${OpenCV_INCLUDE_DIRS}")
 
-rosbuild_add_executable(detectfinger src/SingleControl/main.cpp)
-	target_link_libraries(detectfinger ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2)
+link_directories(${catkin_LIBRARY_DIRS})
+link_directories(${orocos_kdl_LIBRARY_DIRS})
 
-#rosbuild_add_executable(sceneanalysis src/SceneAnalysis/main.cpp src/SceneAnalysis/SceneDrawer.cpp src/SceneAnalysis/signal_catch.cpp src/SceneAnalysis/opengles.cpp src/SceneAnalysis/kbhit.cpp)
-#	target_link_libraries(sceneanalysis ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2 -lGL -lGLU glut64 /usr/lib/x86_64-linux-gnu/libglut.a /usr/lib/x86_64-linux-gnu/libGL.a)
+add_executable(detectfinger src/SingleControl/main.cpp)
+add_dependencies(detectfinger geometry_msgs_gencpp)
+target_link_libraries(detectfinger ${catkin_LIBRARIES}
+				   ${OpenNI_LIBRARIES}
+				   ${orocos_kdl_LIBRARIES}
+				   ${OpenGL_INCLUDE_DIRS} -lXnVNite_1_5_2)
 
+install(TARGETS detectfinger
+	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-#rosbuild_add_executable(detectfingerviewer src/PointViewer/main.cpp src/PointViewer/PointDrawer.cpp)
-#	target_link_libraries(detectfingerviewer ${OpenCV_LIBRARIES} -lOpenNI -lXnVNite_1_5_2 -lGL -lGLU)#-lGL -lGLU) # glut64) #/usr/lib/x86_64-linux-gnu/libglut.a /usr/lib/x86_64-linux-gnu/libGL.a)
-#rosbuild_add_executable(detectpeople src/detectpeople.cpp)
-#  target_link_libraries(detectpeople ${OpenCV_LIBRARIES})
+install(DIRECTORY include/${PROJECT_NAME}/
+	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
 
-rosbuild_add_executable(image_converter src/image_converter.cpp)
-  target_link_libraries(image_converter ${OpenCV_LIBRARIES})
+install(FILES walle.xml 
+	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
