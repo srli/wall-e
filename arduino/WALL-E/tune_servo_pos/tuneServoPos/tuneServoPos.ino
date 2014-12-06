@@ -1,13 +1,14 @@
 
-#include <Servo.h>
+#include <VarSpeedServo.h>
 
-Servo rArm;
+VarSpeedServo rArm;
 
 int pos = 90; //stores servo position; set at neutral = 90 deg
 
 void setup(){
     Serial.begin(9600);
-    rArm.attach(9);
+    rArm.attach(5);
+    rArm.write(90,255,true);
 
 }
 
