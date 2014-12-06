@@ -181,10 +181,10 @@ int main(int argc, char** argv)
 			//string String = static_cast<ostringstream*>( &(ostringstream() << xpos) )->str();
 			//msg = String;
 			
-			msg.positions = xpos;
-			//msg.positions.push_back(xpos);
-			//msg.positions.push_back(ypos);
-			//msg.positions.push_back(zpos);
+			//msg.positions = xpos;
+			msg.positions.push_back(xpos);
+			msg.positions.push_back(ypos);
+			msg.positions.push_back(zpos);
 
 			pub.publish(msg);
 			ros::spinOnce();
