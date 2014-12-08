@@ -42,14 +42,16 @@ int sensorValue = 0;
 //strings are not stored inside a message instance; instead an unsigned char is stored
 //so when publishing, you must store the string data elsewhere and set the pointer
 //this is what we're doing below.
-char forwards[9] = "forwards";
-char waiting[8]  = "waiting";
+char forwards[] = "forwards";
+char waiting[]  = "waiting";
 char left[5]     = "left";
 char right[6]    = "right";
 char stopped[5]  = "stop";
 char happy[6]    = "happy";
 char sad[4]      = "sad";
 char whoa[5]     = "whoa";
+char near[]   = "too close!!";
+
 void motor_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
   sensorValue = analogRead(ultrasonicsensorPin); //init ultrasonic
   if (sensorValue >70){
@@ -77,18 +79,18 @@ void motor_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
     //   break;
     case 73: //val of 'i' is 73
       str_msg.data = forwards;
-      roboclaw.ForwardMixed(address,20);
+      roboclaw.ForwardMixed(address,30);
       break;
     case 74: //val of 'j' is 74
       str_msg.data = left;
-      roboclaw.TurnRightMixed(address,20);
+      roboclaw.TurnRightMixed(address,23);
       break;
     case 76: //val of 'l' is 76
       str_msg.data = right;
-      roboclaw.TurnLeftMixed(address,20);
+      roboclaw.TurnLeftMixed(address,23);
       break;
     case 75: //val of k is 75
-      Serial.print("stop");
+      str_msg.data = stopped;
       roboclaw.ForwardMixed(address,0);
       delay(50);
       roboclaw.TurnRightMixed(address,0);
@@ -106,6 +108,14 @@ void motor_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       // lEye.write(69,45,false);
       // huh.write(54,25,true); 
     }
+  }
+  else{
+  str_msg.data = near;
+  roboclaw.ForwardMixed(address,0);
+  delay(50);
+  roboclaw.TurnRightMixed(address,0);
+  delay(50);
+  roboclaw.TurnLeftMixed(address,0);
   }
 }
 

@@ -13,7 +13,7 @@
 #define address 0x80
 
 //Setup communcaitions with roboclaw. Use pins 10 and 11 with 10ms timeout
-RoboClaw roboclaw(10,11,10000);
+RoboClaw roboclaw(19,18,10000);
 
 void setup() {
   Serial.begin(9600); //serial connection to PC
