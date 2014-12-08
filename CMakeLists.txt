@@ -29,6 +29,7 @@ add_message_files(
 
 generate_messages(
 	DEPENDENCIES
+	#pointerpos
 	geometry_msgs
 	std_msgs
 	sensor_msgs

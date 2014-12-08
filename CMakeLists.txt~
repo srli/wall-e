@@ -29,6 +29,7 @@ add_message_files(
 
 generate_messages(
 	DEPENDENCIES
+	pointerpos
 	geometry_msgs
 	std_msgs
 	sensor_msgs
@@ -82,7 +83,7 @@ target_link_libraries(skeleton ${catkin_LIBRARIES}
 #				   ${GLUT_LIBRARIES}
 #				   -lXnVNite_1_5_2)
 
-install(TARGETS detectfinger
+install(TARGETS detectfinger skeleton
 	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY include/${PROJECT_NAME}/
