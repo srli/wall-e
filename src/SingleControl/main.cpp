@@ -174,6 +174,7 @@ int main(int argc, char** argv)
 		}
 		else
 		{
+
 			context.WaitAnyUpdateAll();
 			((XnVSessionManager*)pSessionGenerator)->Update(&context);
 			//std::cout << xpos << std::endl;
