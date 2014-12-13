@@ -7,7 +7,7 @@ from walle.msg import *
 
 def callback(data):
 	global message, prev_pos
-	xposition = int(data.positions)
+	xposition = int(data.positionx)
 	print xposition
 	if xposition > 20:
 		message = 74

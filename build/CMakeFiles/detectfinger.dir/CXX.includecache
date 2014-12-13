@@ -6,6 +6,30 @@
 
 #IncludeRegexTransform: 
 
+../msg_gen/cpp/include/walle/gestures.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+../msg_gen/cpp/include/walle/ros/serialization.h
+ros/builtin_message_traits.h
+../msg_gen/cpp/include/walle/ros/builtin_message_traits.h
+ros/message_operations.h
+../msg_gen/cpp/include/walle/ros/message_operations.h
+ros/time.h
+../msg_gen/cpp/include/walle/ros/time.h
+ros/macros.h
+../msg_gen/cpp/include/walle/ros/macros.h
+ros/assert.h
+../msg_gen/cpp/include/walle/ros/assert.h
+std_msgs/Header.h
+../msg_gen/cpp/include/walle/std_msgs/Header.h
+
 ../msg_gen/cpp/include/walle/pointerpos.h
 string
 -
@@ -196,6 +220,8 @@ stdlib.h
 std_msgs/String.h
 /home/sophie/ROS/src/walle/src/SingleControl/std_msgs/String.h
 walle/pointerpos.h
+-
+walle/gestures.h
 -
 sstream
 -

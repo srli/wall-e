@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include "std_msgs/String.h"
 #include <walle/pointerpos.h>
+#include <walle/gestures.h>
 
 #include <sstream>
 
@@ -32,6 +33,7 @@
 int xpos;
 int ypos;
 int zpos;
+bool wave;
 
 //-----------------------------------------------------------------------------
 // Callbacks
@@ -56,6 +58,7 @@ void XN_CALLBACK_TYPE SessionEnd(void* UserCxt)
 void XN_CALLBACK_TYPE OnWaveCB(void* cxt)
 {
 	printf("Wave!\n");
+	wave = true;
 }
 // callback for a new position of any hand
 void XN_CALLBACK_TYPE OnPointUpdate(const XnVHandPointContext* pContext, void* cxt)
@@ -164,6 +167,9 @@ int main(int argc, char** argv)
   	ros::Publisher pub = rosnode.advertise<walle::pointerpos>("point_location", 10);
   	walle::pointerpos msg;
 
+  	ros::Publisher pub_wave = rosnode.advertise<walle::gestures>("wave_detection", 10);
+  	walle::gestures msg_gestures;
+
 
 	// Main loop
 	while (!xnOSWasKeyboardHit())
@@ -182,12 +188,22 @@ int main(int argc, char** argv)
 			//string String = static_cast<ostringstream*>( &(ostringstream() << xpos) )->str();
 			//msg = String;
 			
-			msg.positions = xpos;
+			msg.positionx = xpos;
+			msg.positionz = zpos;
 			//msg.positions.push_back(xpos);
 			//msg.positions.push_back(ypos);
 			//msg.positions.push_back(zpos);
+/*
+			msg_wave = wave;
+			pub_wave.publish(msg_wave);
+			wave = "false";
+*/			pub.publish(msg);
 
-			pub.publish(msg);
+			msg_gestures.wave = wave;
+			wave = false;
+			pub_wave.publish(msg_gestures);
+
+
 			ros::spinOnce();
 			//std::cout << pContext->ptPosition.Y << std::endl;
 		}

@@ -1,8 +1,10 @@
 (cl:in-package walle-msg)
 (cl:export '(HEADER-VAL
           HEADER
-          POSITIONS-VAL
-          POSITIONS
+          POSITIONX-VAL
+          POSITIONX
+          POSITIONZ-VAL
+          POSITIONZ
           SERVO-VAL
           SERVO
 ))

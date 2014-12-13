@@ -45,8 +45,46 @@ CMAKE_BINARY_DIR = /home/sophie/ROS/src/walle/build
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_genmsg_cpp.dir/progress.make
 
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/walle/gestures.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/walle/HRI.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/walle/pointerpos.h
+
+../msg_gen/cpp/include/walle/gestures.h: ../msg/gestures.msg
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/walle/gestures.h: ../manifest.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/rosgraph/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/rospy/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/cv_bridge/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/message_filters/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/class_loader/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/pluginlib/package.xml
+../msg_gen/cpp/include/walle/gestures.h: /opt/ros/indigo/share/image_transport/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/ROS/src/walle/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/walle/gestures.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/sophie/ROS/src/walle/msg/gestures.msg
 
 ../msg_gen/cpp/include/walle/HRI.h: ../msg/HRI.msg
 ../msg_gen/cpp/include/walle/HRI.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
@@ -80,7 +118,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/walle/pointerpos.h
 ../msg_gen/cpp/include/walle/HRI.h: /opt/ros/indigo/share/class_loader/package.xml
 ../msg_gen/cpp/include/walle/HRI.h: /opt/ros/indigo/share/pluginlib/package.xml
 ../msg_gen/cpp/include/walle/HRI.h: /opt/ros/indigo/share/image_transport/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/ROS/src/walle/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/ROS/src/walle/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/walle/HRI.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/sophie/ROS/src/walle/msg/HRI.msg
 
@@ -117,11 +155,12 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/walle/pointerpos.h
 ../msg_gen/cpp/include/walle/pointerpos.h: /opt/ros/indigo/share/class_loader/package.xml
 ../msg_gen/cpp/include/walle/pointerpos.h: /opt/ros/indigo/share/pluginlib/package.xml
 ../msg_gen/cpp/include/walle/pointerpos.h: /opt/ros/indigo/share/image_transport/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/ROS/src/walle/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sophie/ROS/src/walle/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/walle/pointerpos.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/sophie/ROS/src/walle/msg/pointerpos.msg
 
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/walle/gestures.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/walle/HRI.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/walle/pointerpos.h
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make

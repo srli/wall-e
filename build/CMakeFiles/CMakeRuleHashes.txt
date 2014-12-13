@@ -1,10 +1,13 @@
 # Hashes of file build rules.
 a6c1f1349e3b947501bb01cf3d2a1218 ../msg_gen/cpp/include/walle/HRI.h
+c5e14741a903359a8b30de4d10002763 ../msg_gen/cpp/include/walle/gestures.h
 f958dde437ef2e9978afbce4c242d026 ../msg_gen/cpp/include/walle/pointerpos.h
 31f10de1216c42bce9ea5ddb9969faea ../msg_gen/lisp/HRI.lisp
+f324c7e2c87be692fc4aaff5017a245f ../msg_gen/lisp/gestures.lisp
 fb106182821ae696c67232c6138e4ba6 ../msg_gen/lisp/pointerpos.lisp
 0783a16c447ff9595d80b49a14a6852a ../src/walle/msg/_HRI.py
-bce4bb5ff89e41cf5d6f2fc7318d0326 ../src/walle/msg/__init__.py
+1158ed333e8e31d0f89ac9ee6996a096 ../src/walle/msg/__init__.py
+18ce16087ed2052b4aed724c431f04e3 ../src/walle/msg/_gestures.py
 513cb9b2d68d0a7d4f8cab02e0889505 ../src/walle/msg/_pointerpos.py
 73a4a78023c79d1d3bc7aa17478ea4f9 CMakeFiles/ROSBUILD_genmsg_cpp
 73a4a78023c79d1d3bc7aa17478ea4f9 CMakeFiles/ROSBUILD_genmsg_lisp

@@ -7,12 +7,13 @@ import struct
 import std_msgs.msg
 
 class pointerpos(genpy.Message):
-  _md5sum = "98ec36567cc0e5a0b0597d256973a689"
+  _md5sum = "2d5351b051f027c38ab4cedd68d85d7c"
   _type = "walle/pointerpos"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """Header Header
 
-int32 positions
+int32 positionx
+int32 positionz
 int32 servo
 ================================================================================
 MSG: std_msgs/Header
@@ -33,8 +34,8 @@ time stamp
 string frame_id
 
 """
-  __slots__ = ['Header','positions','servo']
-  _slot_types = ['std_msgs/Header','int32','int32']
+  __slots__ = ['Header','positionx','positionz','servo']
+  _slot_types = ['std_msgs/Header','int32','int32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -44,7 +45,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       Header,positions,servo
+       Header,positionx,positionz,servo
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -55,13 +56,16 @@ string frame_id
       #message fields cannot be None, assign default values for those that are
       if self.Header is None:
         self.Header = std_msgs.msg.Header()
-      if self.positions is None:
-        self.positions = 0
+      if self.positionx is None:
+        self.positionx = 0
+      if self.positionz is None:
+        self.positionz = 0
       if self.servo is None:
         self.servo = 0
     else:
       self.Header = std_msgs.msg.Header()
-      self.positions = 0
+      self.positionx = 0
+      self.positionz = 0
       self.servo = 0
 
   def _get_types(self):
@@ -88,7 +92,7 @@ string frame_id
       else:
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_struct_2i.pack(_x.positions, _x.servo))
+      buff.write(_struct_3i.pack(_x.positionx, _x.positionz, _x.servo))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -116,8 +120,8 @@ string frame_id
         self.Header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 8
-      (_x.positions, _x.servo,) = _struct_2i.unpack(str[start:end])
+      end += 12
+      (_x.positionx, _x.positionz, _x.servo,) = _struct_3i.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -142,7 +146,7 @@ string frame_id
       else:
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_struct_2i.pack(_x.positions, _x.servo))
+      buff.write(_struct_3i.pack(_x.positionx, _x.positionz, _x.servo))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -171,12 +175,12 @@ string frame_id
         self.Header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 8
-      (_x.positions, _x.servo,) = _struct_2i.unpack(str[start:end])
+      end += 12
+      (_x.positionx, _x.positionz, _x.servo,) = _struct_3i.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
 _struct_3I = struct.Struct("<3I")
-_struct_2i = struct.Struct("<2i")
+_struct_3i = struct.Struct("<3i")

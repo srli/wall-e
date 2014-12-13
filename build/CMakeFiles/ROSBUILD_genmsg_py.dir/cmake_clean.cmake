@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "../src/walle/msg"
   "CMakeFiles/ROSBUILD_genmsg_py"
   "../src/walle/msg/__init__.py"
+  "../src/walle/msg/_gestures.py"
   "../src/walle/msg/_HRI.py"
   "../src/walle/msg/_pointerpos.py"
 )

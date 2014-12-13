@@ -24,14 +24,16 @@ struct pointerpos_ {
 
   pointerpos_()
   : Header()
-  , positions(0)
+  , positionx(0)
+  , positionz(0)
   , servo(0)
   {
   }
 
   pointerpos_(const ContainerAllocator& _alloc)
   : Header(_alloc)
-  , positions(0)
+  , positionx(0)
+  , positionz(0)
   , servo(0)
   {
   }
@@ -39,8 +41,11 @@ struct pointerpos_ {
   typedef  ::std_msgs::Header_<ContainerAllocator>  _Header_type;
    ::std_msgs::Header_<ContainerAllocator>  Header;
 
-  typedef int32_t _positions_type;
-  int32_t positions;
+  typedef int32_t _positionx_type;
+  int32_t positionx;
+
+  typedef int32_t _positionz_type;
+  int32_t positionz;
 
   typedef int32_t _servo_type;
   int32_t servo;
@@ -73,12 +78,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::walle::pointerpos_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "98ec36567cc0e5a0b0597d256973a689";
+    return "2d5351b051f027c38ab4cedd68d85d7c";
   }
 
   static const char* value(const  ::walle::pointerpos_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x98ec36567cc0e5a0ULL;
-  static const uint64_t static_value2 = 0xb0597d256973a689ULL;
+  static const uint64_t static_value1 = 0x2d5351b051f027c3ULL;
+  static const uint64_t static_value2 = 0x8ab4cedd68d85d7cULL;
 };
 
 template<class ContainerAllocator>
@@ -97,7 +102,8 @@ struct Definition< ::walle::pointerpos_<ContainerAllocator> > {
   {
     return "Header Header\n\
 \n\
-int32 positions\n\
+int32 positionx\n\
+int32 positionz\n\
 int32 servo\n\
 ================================================================================\n\
 MSG: std_msgs/Header\n\
@@ -136,7 +142,8 @@ template<class ContainerAllocator> struct Serializer< ::walle::pointerpos_<Conta
   template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
   {
     stream.next(m.Header);
-    stream.next(m.positions);
+    stream.next(m.positionx);
+    stream.next(m.positionz);
     stream.next(m.servo);
   }
 
@@ -158,8 +165,10 @@ struct Printer< ::walle::pointerpos_<ContainerAllocator> >
     s << indent << "Header: ";
 s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.Header);
-    s << indent << "positions: ";
-    Printer<int32_t>::stream(s, indent + "  ", v.positions);
+    s << indent << "positionx: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.positionx);
+    s << indent << "positionz: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.positionz);
     s << indent << "servo: ";
     Printer<int32_t>::stream(s, indent + "  ", v.servo);
   }
