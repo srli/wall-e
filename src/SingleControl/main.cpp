@@ -19,15 +19,30 @@
 
 //ROS headers
 #include <ros/ros.h>
+#include <ros/package.h> //we use this to get file paths
+
 #include <stdlib.h>
 #include "std_msgs/String.h"
 #include <walle/pointerpos.h>
 
 #include <sstream>
 
+
+#include <XnOpenNI.h>
+#include <XnCodecIDs.h>
+#include <XnCppWrapper.h>
+
+
+
 // xml to initialize OpenNI
 #define SAMPLE_XML_FILE "Data/Sample-Tracking.xml"
 #define SAMPLE_XML_FILE_LOCAL "Sample-Tracking.xml"
+
+using std::string;
+
+xn::Context        g_Context;
+xn::DepthGenerator g_DepthGenerator;
+xn::UserGenerator  g_UserGenerator;
 
 int xpos;
 int ypos;
@@ -116,6 +131,12 @@ int main(int argc, char** argv)
 	{
 		// Local mode
 		// Create context
+
+		//string configFilename = ros::package::getPath("walle") + "src/Data/Sample-Tracking.xml";
+    	//XnStatus nRetVal = g_Context.InitFromXmlFile(configFilename.c_str());
+    	//CHECK_RC(nRetVal, "InitFromXml");
+
+
 		const char *fn = NULL;
 		if      (fileExists(SAMPLE_XML_FILE)) fn = SAMPLE_XML_FILE;
 		else if (fileExists(SAMPLE_XML_FILE_LOCAL)) fn = SAMPLE_XML_FILE_LOCAL;
