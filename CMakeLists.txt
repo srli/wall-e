@@ -57,17 +57,17 @@ link_directories(${orocos_kdl_LIBRARY_DIRS}
 
 
 add_executable(detectfinger src/SingleControl/main.cpp)
-add_dependencies(detectfinger geometry_msgs_gencpp)
+add_dependencies(detectfinger geometry_msgs_gencpp ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(detectfinger ${catkin_LIBRARIES}
 				   ${OpenNI_LIBRARIES}
 				   ${orocos_kdl_LIBRARIES}
 				   ${OpenGL_INCLUDE_DIRS} -lXnVNite_1_5_2)
 
-add_executable(skeleton src/Skeleton/openni_tracker.cpp)
-add_dependencies(skeleton geometry_msgs_gencpp)
-target_link_libraries(skeleton ${catkin_LIBRARIES}
-			       ${OpenNI_LIBRARIES}
-			       ${orocos_kdl_LIBRARIES})
+#add_executable(skeleton src/Skeleton/openni_tracker.cpp)
+#add_dependencies(skeleton geometry_msgs_gencpp)
+#target_link_libraries(skeleton ${catkin_LIBRARIES}
+#			       ${OpenNI_LIBRARIES}
+#			       ${orocos_kdl_LIBRARIES})
 
 
 #add_executable(viewer src/PointViewer/main.cpp 
@@ -83,7 +83,7 @@ target_link_libraries(skeleton ${catkin_LIBRARIES}
 #				   ${GLUT_LIBRARIES}
 #				   -lXnVNite_1_5_2)
 
-install(TARGETS detectfinger skeleton
+install(TARGETS detectfinger
 	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY include/${PROJECT_NAME}/
