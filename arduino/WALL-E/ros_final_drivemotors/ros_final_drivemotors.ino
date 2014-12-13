@@ -84,7 +84,7 @@ else {
   }
 }
 
-ros::Subscriber<std_msgs::Char> sub("motor", motor_cb);
+ros::Subscriber<std_msgs::Char> sub("move", motor_cb);
 
 void setup(){
   nh.initNode();

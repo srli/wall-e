@@ -15,6 +15,8 @@ ros::Publisher emotionState("emotionState", &str_msg); //declare publisher
 VarSpeedServo rEye;
 VarSpeedServo lEye;
 VarSpeedServo huh;
+VarSpeedServo rarm;
+VarSpeedServo larm;
 
 int pos = 0;    // variable to store the servo position 
 char inByte;    //init inByte
@@ -50,16 +52,54 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       rEye.write(130,25,false);
       lEye.write(53,25,true);
       break;
+    case 1: //arbitrary value
+      Serial.print("r wave");
+      rarm.write(15,100,true);//R arm out
+      rarm.write(120,100,true);//R arm in
+      rarm.write(15,100,true); //R arm out
+      rarm.write(120,100,true);//R arm in
+      break;
+    case 2: //arbitrary value
+      Serial.print("l wave");
+      larm.write(165, 100, true);//L arm out
+      larm.write(68, 100, true);//in
+      larm.write(165,100, true);//out
+      larm.write(68, 100, true);//in
+      break;
+    case 3:
+      Serial.print("both wave");
+      larm.write(165, 80, false);//l arm out
+      rarm.write(15,80,true); //r arm out
+      larm.write(68, 80, false);//L arm in
+      rarm.write(120,80,true);//R arm in
+      larm.write(165,80, false);//l arm out
+      rarm.write(15,80,true); //r arm out
+      larm.write(68, 80, false);//L arm in
+      rarm.write(120,80,true);//R arm in
+      break;
+    case 4:
+      Serial.print("parallel wave");
+      larm.write(165, 80, false);//l arm out
+      rarm.write(120,80,true);//R arm in
+      larm.write(68, 80, false);//L arm in
+      rarm.write(15,80,true); //r arm out
+      larm.write(165, 80, false);//l arm out
+      rarm.write(120,80,true);//R arm in
+      larm.write(68, 80, false);//L arm in
+      rarm.write(15,80,true); //r arm out
+      rarm.write(120,80,true);//R arm in
+      break;
     default:
       str_msg.data = waiting;
       rEye.write(105,45,false); 
       lEye.write(69,45,false);
       huh.write(54,25,true); 
+
     }
   }
 
 
-ros::Subscriber<std_msgs::Char> sub("emotionComm", emotion_cb);
+ros::Subscriber<std_msgs::Char> sub("emotion", emotion_cb);
 
 void setup(){
   nh.initNode();
@@ -75,6 +115,11 @@ void setup(){
   huh.write(120,15,true); //set init pos at slow speed, wait until done.
   delay(1000);
   huh.write(68,15,true);
+
+  rarm.attach(7);
+  larm.attach(8);
+  rarm.write(130,40,false);
+  larm.write(80, 40, false);
 }
 
 void loop(){
