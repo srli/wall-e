@@ -46,11 +46,22 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       rEye.write(92,15,false);
       lEye.write(86,15,false);
       huh.write(90,10,true);
+      //back to neutral
+      delay(500)
+      rEye.write(105,40,false);
+      lEye.write(69,40,false);
       break;
     case 78: // 'n' = 78
       str_msg.data = whoa;
-      rEye.write(130,25,false);
-      lEye.write(53,25,true);
+      rEye.write(130,25,false); //r eye parallel to ground
+      lEye.write(53,25,true); //l eye parallel to ground
+      rarm.write(15,100,false); //r arm out
+      larm.write(165,100,true); //l arm out
+      delay(500); //wait 1/4 sec
+      rEye.write(105,40,false); //go back to neutral
+      lEye.write(69,40,false);
+      rarm.write(120,100,true);//R arm in
+      larm.write(68, 100, true);//in
       break;
     case 1: //arbitrary value
       Serial.print("r wave");
@@ -89,6 +100,45 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       rarm.write(15,80,true); //r arm out
       rarm.write(120,80,true);//R arm in
       break;
+    case 10: 
+      str_msg.data = helloSequence;
+      rEye.write(105,40,false);
+      lEye.write(69,40,false);
+      huh.write(90,35,true);
+      rEye.write(130,25,false);
+      lEye.write(53,25,true);
+      rEye.write(105,40,false);
+      lEye.write(69,40,false);
+      larm.write(165, 80, false);//l arm out
+      rarm.write(15,80,true); //r arm out
+      larm.write(68, 80, false);//L arm in
+      rarm.write(120,80,true);//R arm in
+      larm.write(165,80, false);//l arm out
+      rarm.write(15,80,true); //r arm out
+      larm.write(68, 80, false);//L arm in
+      rarm.write(120,80,true);//R arm in 
+      break;
+    case 11:
+      str_msg.data = goodbyeSequence;
+      rEye.write(92,15,false); //sad eyes
+      lEye.write(86,15,false);
+      rarm.write(15,100,true);//wave R arm////R arm out
+      rarm.write(120,100,true);//R arm in
+      rarm.write(15,100,true); //R arm out
+      rarm.write(120,100,true);//R arm in
+      delay(250);
+      rEye.write(105,40,false); //go back to neutral
+      lEye.write(69,40,false);
+      break;
+    case 12: 
+    str_msg.data = rogerThat;
+      rEye.write(130,25,false); //r eye parallel to ground
+      lEye.write(53,25,true); //l eye parallel to ground
+      rarm.write(15,100,false); //r arm out
+      larm.write(165,100,true); //l arm out
+      delay(250); //wait 1/4 sec
+      rEye.write(105,40,false); //go back to neutral
+      lEye.write(69,40,false);
     default:
       str_msg.data = waiting;
       rEye.write(105,45,false); 
