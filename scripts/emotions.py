@@ -14,15 +14,17 @@ def interaction_callback(data):
 	if wave:
 		print "waved!"
 		message = random.randint(8, 11)
-	elif hello:
+	if hello:
 		print "hello!"
 		message = 13
-	elif goodbye:
+	if goodbye:
 		print "goodbye"
 		message = 14
-	else:
+	if not goodbye and not hello and not wave:
+		print "none work"
 		message = 0
 	print message
+
 
 def comms_callback(data):
 	if "close" in data:
