@@ -7,17 +7,19 @@ from walle.msg import *
 
 
 def callback(data):
-	global message
+	global message, prev_pos
 	xposition = int(data.positionx)
 	print xposition
 	if xposition > 20:
 		message = 1
-		return
 	if xposition < -20:
 		message = 3
-		return
 	else:
 		message = 5
+	if prev_pos == xposition:
+		message = 5
+	prev_pos = xposition
+	return
 
 def publisher():
     rospy.init_node("centerfinger", anonymous = True)
