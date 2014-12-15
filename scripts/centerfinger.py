@@ -33,4 +33,5 @@ def publisher():
        
 if __name__ == "__main__":
 	message = 5
+	prev_pos = 0
    	publisher()
