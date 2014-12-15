@@ -4,7 +4,7 @@ import rospy
 from std_msgs.msg import String
 from std_msgs.msg import Char
 from walle.msg import *
-from math import random
+from random import random
 
 def interaction_callback(data):
 	wave = data.wave
