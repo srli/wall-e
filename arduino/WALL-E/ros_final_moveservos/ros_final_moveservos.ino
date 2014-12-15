@@ -35,23 +35,21 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
   	 //state machine that responds to char recieved as long as 
   	 //robot does not see a human in front of it
     switch(cmd_msg.data){
-    case 72: //'h' = 72
+    case 6:
       str_msg.data = happy;
       rEye.write(105,40,false);
       lEye.write(69,40,false);
       huh.write(90,35,true);
       break;
-    case 77: // 'm' = 77
+    case 7: 
       str_msg.data = sad;
       rEye.write(92,15,false);
       lEye.write(86,15,false);
       huh.write(90,10,true);
       //back to neutral
       delay(500)
-      rEye.write(105,40,false);
-      lEye.write(69,40,false);
       break;
-    case 78: // 'n' = 78
+    case 8: 
       str_msg.data = whoa;
       rEye.write(130,25,false); //r eye parallel to ground
       lEye.write(53,25,true); //l eye parallel to ground
@@ -63,21 +61,21 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       rarm.write(120,100,true);//R arm in
       larm.write(68, 100, true);//in
       break;
-    case 1: //arbitrary value
+    case 9: //arbitrary value
       Serial.print("r wave");
       rarm.write(15,100,true);//R arm out
       rarm.write(120,100,true);//R arm in
       rarm.write(15,100,true); //R arm out
       rarm.write(120,100,true);//R arm in
       break;
-    case 2: //arbitrary value
+    case 10: //arbitrary value
       Serial.print("l wave");
       larm.write(165, 100, true);//L arm out
       larm.write(68, 100, true);//in
       larm.write(165,100, true);//out
       larm.write(68, 100, true);//in
       break;
-    case 3:
+    case 11:
       Serial.print("both wave");
       larm.write(165, 80, false);//l arm out
       rarm.write(15,80,true); //r arm out
@@ -88,7 +86,7 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       larm.write(68, 80, false);//L arm in
       rarm.write(120,80,true);//R arm in
       break;
-    case 4:
+    case 12:
       Serial.print("parallel wave");
       larm.write(165, 80, false);//l arm out
       rarm.write(120,80,true);//R arm in
@@ -100,7 +98,7 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       rarm.write(15,80,true); //r arm out
       rarm.write(120,80,true);//R arm in
       break;
-    case 10: 
+    case 13: 
       str_msg.data = helloSequence;
       rEye.write(105,40,false);
       lEye.write(69,40,false);
@@ -118,7 +116,7 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       larm.write(68, 80, false);//L arm in
       rarm.write(120,80,true);//R arm in 
       break;
-    case 11:
+    case 14:
       str_msg.data = goodbyeSequence;
       rEye.write(92,15,false); //sad eyes
       lEye.write(86,15,false);
@@ -130,7 +128,7 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       rEye.write(105,40,false); //go back to neutral
       lEye.write(69,40,false);
       break;
-    case 12: 
+    case 15: 
     str_msg.data = rogerThat;
       rEye.write(130,25,false); //r eye parallel to ground
       lEye.write(53,25,true); //l eye parallel to ground
