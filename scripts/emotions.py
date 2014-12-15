@@ -4,7 +4,7 @@ import rospy
 from std_msgs.msg import String
 from std_msgs.msg import Char
 from walle.msg import *
-from random import random
+import random
 
 def interaction_callback(data):
 	wave = data.wave
@@ -12,15 +12,17 @@ def interaction_callback(data):
 	goodbye = data.goodbye
 	if wave:
 		print "waved!"
-		message = randint(8, 11)
-	elif hello:
+		message = random.randint(8, 11)
+	if hello:
 		print "hello!"
 		message = 13
-	elif goodbye:
+	if goodbye:
 		print "goodbye"
 		message = 14
-	else:
+	if not goodbye and not hello and not wave:
+		print "none work"
 		message = 0
+
 
 def comms_callback(data):
 	if "close" in data:
