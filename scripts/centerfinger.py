@@ -22,7 +22,7 @@ def callback(data):
 def publisher():
     rospy.init_node("centerfinger", anonymous = True)
     rospy.Subscriber("/point_location", pointerpos, callback)
-    pub = rospy.Publisher('/motors', Int16)
+    pub = rospy.Publisher('/move', Int16)
     r = rospy.Rate(10)
     while not rospy.is_shutdown():
  		msg = message

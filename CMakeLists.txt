@@ -25,6 +25,7 @@ find_package(GLUT REQUIRED)
 add_message_files(
 	FILES
 	pointerpos.msg
+	gestures.msg
 )
 
 generate_messages(

@@ -23,7 +23,9 @@
 
 #include <stdlib.h>
 #include "std_msgs/String.h"
+#include "std_msgs/Bool.h"
 #include <walle/pointerpos.h>
+#include <walle/gestures.h>
 
 #include <sstream>
 
@@ -47,6 +49,9 @@ xn::UserGenerator  g_UserGenerator;
 int xpos;
 int ypos;
 int zpos;
+bool wave;
+bool sess_start;
+bool sess_end;
 
 //-----------------------------------------------------------------------------
 // Callbacks
@@ -61,16 +66,19 @@ void XN_CALLBACK_TYPE SessionProgress(const XnChar* strFocus, const XnPoint3D& p
 void XN_CALLBACK_TYPE SessionStart(const XnPoint3D& ptFocusPoint, void* UserCxt)
 {
 	printf("Session started. Please wave (%6.2f,%6.2f,%6.2f)...\n", ptFocusPoint.X, ptFocusPoint.Y, ptFocusPoint.Z);
+	sess_start = true;
 }
 // Callback for session end
 void XN_CALLBACK_TYPE SessionEnd(void* UserCxt)
 {
 	printf("Session ended. Please perform focus gesture to start session\n");
+	sess_end = true;
 }
 // Callback for wave detection
 void XN_CALLBACK_TYPE OnWaveCB(void* cxt)
 {
 	printf("Wave!\n");
+	wave = true;
 }
 // callback for a new position of any hand
 void XN_CALLBACK_TYPE OnPointUpdate(const XnVHandPointContext* pContext, void* cxt)
@@ -185,6 +193,9 @@ int main(int argc, char** argv)
   	ros::Publisher pub = rosnode.advertise<walle::pointerpos>("point_location", 10);
   	walle::pointerpos msg;
 
+  	ros::Publisher pub_gestures = rosnode.advertise<walle::gestures>("detected_gestures", 10);
+  	walle::gestures msg_gestures;
+
 
 	// Main loop
 	while (!xnOSWasKeyboardHit())
@@ -206,8 +217,17 @@ int main(int argc, char** argv)
 			msg.positionx = xpos;
 			msg.positiony = ypos;
 			msg.positionz = zpos;
-
 			pub.publish(msg);
+			
+			msg_gestures.wave = wave;
+			msg_gestures.hello = sess_start;
+			msg_gestures.goodbye = sess_end;
+			pub_gestures.publish(msg_gestures);
+			
+			wave = false;
+			sess_start = false;
+			sess_end = false;
+
 			ros::spinOnce();
 			//std::cout << pContext->ptPosition.Y << std::endl;
 		}

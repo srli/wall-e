@@ -25,6 +25,7 @@ find_package(GLUT REQUIRED)
 add_message_files(
 	FILES
 	pointerpos.msg
+	gestures.msg
 )
 
 generate_messages(
@@ -83,7 +84,7 @@ target_link_libraries(detectfinger ${catkin_LIBRARIES}
 #				   ${GLUT_LIBRARIES}
 #				   -lXnVNite_1_5_2)
 
-install(TARGETS detectfinger skeleton
+install(TARGETS detectfinger
 	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY include/${PROJECT_NAME}/
