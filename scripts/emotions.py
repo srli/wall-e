@@ -2,21 +2,36 @@
 import roslib; roslib.load_manifest('walle')
 import rospy
 from std_msgs.msg import String
-from std_msgs.msg import *
+from std_msgs.msg import Char
 from walle.msg import *
+from math import random
 
 def interaction_callback(data):
 	wave = data.wave
-	click = data.click
+	hello = data.hello
+	goodbye = data.goodbye
 	if wave:
 		print "waved!"
-		message = 80
+		message = randint(8, 11)
+	elif hello:
+		print "hello!"
+		message = 13
+	elif goodbye:
+		print "goodbye"
+		message = 14
+	else:
+		message = 0
+
+def comms_callback(data):
+	if "close" in data:
+		message = 8
+
 
 def publisher():
     rospy.init_node("interaction_node", anonymous = True)
-    #rospy.Subscriber("/point_location", pointerpos, callback)
     rospy.Subscriber("/detected_gestures", gestures, interaction_callback)
-    pub = rospy.Publisher('/emotion', Int16)
+    rospy.Subscriber("/drive_comms", String, comms_callback)
+    pub = rospy.Publisher('/emotion', Char)
     r = rospy.Rate(10)
     while not rospy.is_shutdown():
  		msg = message

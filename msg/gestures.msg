@@ -1,4 +1,5 @@
 Header Header
 
 bool wave
-bool click
+bool hello
+bool goodbye

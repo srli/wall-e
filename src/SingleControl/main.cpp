@@ -66,13 +66,13 @@ void XN_CALLBACK_TYPE SessionProgress(const XnChar* strFocus, const XnPoint3D& p
 void XN_CALLBACK_TYPE SessionStart(const XnPoint3D& ptFocusPoint, void* UserCxt)
 {
 	printf("Session started. Please wave (%6.2f,%6.2f,%6.2f)...\n", ptFocusPoint.X, ptFocusPoint.Y, ptFocusPoint.Z);
-	sess_start = true
+	sess_start = true;
 }
 // Callback for session end
 void XN_CALLBACK_TYPE SessionEnd(void* UserCxt)
 {
 	printf("Session ended. Please perform focus gesture to start session\n");
-	sess_end = true
+	sess_end = true;
 }
 // Callback for wave detection
 void XN_CALLBACK_TYPE OnWaveCB(void* cxt)
@@ -217,12 +217,16 @@ int main(int argc, char** argv)
 			msg.positionx = xpos;
 			msg.positiony = ypos;
 			msg.positionz = zpos;
-
 			pub.publish(msg);
 			
 			msg_gestures.wave = wave;
+			msg_gestures.hello = sess_start;
+			msg_gestures.goodbye = sess_end;
 			pub_gestures.publish(msg_gestures);
+			
 			wave = false;
+			sess_start = false;
+			sess_end = false;
 
 			ros::spinOnce();
 			//std::cout << pContext->ptPosition.Y << std::endl;
