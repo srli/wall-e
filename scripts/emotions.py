@@ -39,5 +39,5 @@ def publisher():
  		r.sleep()
        
 if __name__ == "__main__":
-	message = 75
+	message = 0
    	publisher()
