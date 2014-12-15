@@ -46,19 +46,19 @@ void motor_cb(const std_msgs::Char& cmd_msg){
       //single quotes tell controller to get ASCII value
       //eg. 'a'=97
     switch(cmd_msg.data){
-    case 2: //val of 'i' is 73
+    case 2: 
       str_msg.data = forwards;
       roboclaw.ForwardMixed(address,30);
       break;
-    case 1: //val of 'j' is 74
+    case 1: 
       str_msg.data = left;
       roboclaw.TurnRightMixed(address,23);
       break;
-    case 3: //val of 'l' is 76
+    case 3: 
       str_msg.data = right;
       roboclaw.TurnLeftMixed(address,23);
       break;
-    case 5: //val of k is 75
+    case 5: 
       str_msg.data = stopped;
       roboclaw.ForwardMixed(address,0);
       delay(50);
