@@ -28,7 +28,7 @@ def interaction_callback(data):
 
 def comms_callback(data):
 	if "close" in data:
-		message = 8
+		message = 6
 
 
 def publisher():
@@ -37,10 +37,11 @@ def publisher():
 	rospy.Subscriber("/detected_gestures", gestures, interaction_callback)
 	rospy.Subscriber("/drive_comms", String, comms_callback)
 	pub = rospy.Publisher('/emotion', Char)
-	r = rospy.Rate(10)
+	r = rospy.Rate(20)
 	while not rospy.is_shutdown():
-		msg = message
-		pub.publish(msg)
+		if message != 0:
+			msg = message
+			pub.publish(msg)
 		r.sleep()
        
 if __name__ == "__main__":
