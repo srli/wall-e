@@ -20,6 +20,7 @@ ros::NodeHandle nh; //init rosNode
 std_msgs::String str_msg; //create string msgs
 ros::Publisher driveComms("driveComms", &str_msg); //declare publisher
 
+
 int pos = 0;    // variable to store the servo position 
 char inByte;    //init inByte
 int ultrasonicsensorPin = A0;
@@ -31,33 +32,33 @@ int sensorValue = 0;
 //this is what we're doing below.
 char forwards[] = "forwards";
 char waiting[]  = "waiting";
-char left[5]     = "left";
-char right[6]    = "right";
-char stopped[5]  = "stop";
+char left[]     = "left";
+char right[]    = "right";
+char stopped[]  = "stop";
 char near[]   = "too close!!";
 
 //ROS callback funct
 void motor_cb(const std_msgs::Char& cmd_msg){ 
   sensorValue = analogRead(ultrasonicsensorPin); //init ultrasonic
-  if (sensorValue >70){
+  if (sensorValue >200){
 
         //state machine that responds to char recieved
       //single quotes tell controller to get ASCII value
       //eg. 'a'=97
     switch(cmd_msg.data){
-    case 73: //val of 'i' is 73
+    case 2: //val of 'i' is 73
       str_msg.data = forwards;
       roboclaw.ForwardMixed(address,30);
       break;
-    case 74: //val of 'j' is 74
+    case 1: //val of 'j' is 74
       str_msg.data = left;
       roboclaw.TurnRightMixed(address,23);
       break;
-    case 76: //val of 'l' is 76
+    case 3: //val of 'l' is 76
       str_msg.data = right;
       roboclaw.TurnLeftMixed(address,23);
       break;
-    case 75: //val of k is 75
+    case 5: //val of k is 75
       str_msg.data = stopped;
       roboclaw.ForwardMixed(address,0);
       delay(50);
