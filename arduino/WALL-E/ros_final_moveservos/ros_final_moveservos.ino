@@ -30,26 +30,15 @@ char sad[4]      = "sad";
 char whoa[5]     = "whoa";
 char near[]   = "too close!!";
 char waiting[]  = "waiting";
+char helloSequence[] = "hi!";
+char goodbyeSequence[] = "bye!";
+char rogerThat[] = "got it!";
 
 void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
   	 //state machine that responds to char recieved as long as 
   	 //robot does not see a human in front of it
     switch(cmd_msg.data){
-    case 6:
-      str_msg.data = happy;
-      rEye.write(105,40,false);
-      lEye.write(69,40,false);
-      huh.write(90,35,true);
-      break;
-    case 7: 
-      str_msg.data = sad;
-      rEye.write(92,15,false);
-      lEye.write(86,15,false);
-      huh.write(90,10,true);
-      //back to neutral
-      delay(500)
-      break;
-    case 8: 
+    case 6: 
       str_msg.data = whoa;
       rEye.write(130,25,false); //r eye parallel to ground
       lEye.write(53,25,true); //l eye parallel to ground
@@ -60,6 +49,20 @@ void emotion_cb(const std_msgs::Char& cmd_msg){ //ROS callback funct
       lEye.write(69,40,false);
       rarm.write(120,100,true);//R arm in
       larm.write(68, 100, true);//in
+      break;
+    case 7: 
+      str_msg.data = sad;
+      rEye.write(92,15,false);
+      lEye.write(86,15,false);
+      huh.write(90,10,true);
+      //back to neutral
+      delay(500);
+      break;
+    case 8:
+      str_msg.data = happy;
+      rEye.write(105,40,false);
+      lEye.write(69,40,false);
+      huh.write(90,35,true);
       break;
     case 9: //arbitrary value
       Serial.print("r wave");
