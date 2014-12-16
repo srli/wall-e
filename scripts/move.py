@@ -15,7 +15,7 @@ def callback(data):
 	if xposition < -20:
 		message = 3
 	else:
-		message = 5
+		message = 5	
 	if prev_pos == xposition:
 		message = 5
 	prev_pos = xposition
