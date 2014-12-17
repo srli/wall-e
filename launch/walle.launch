@@ -1,0 +1,7 @@
+<launch>
+
+<node name="$(anon foo)" pkg="walle" type="detectfinger" />
+<node name="move" pkg="walle" type="move.py" />
+<node name="emotions" pkg="walle" type="emotions.py" />
+
+</launch>
