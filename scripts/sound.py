@@ -45,6 +45,7 @@ def sound_callback(data):
     global all_sounds_list
 
     char = data.data
+    print char
     if char == 8:
         print "play huh"
         all_sounds["huh"].playme = True
@@ -64,6 +65,9 @@ def sound_callback(data):
 def subscriber():
     rospy.init_node("sound_node", anonymous = True)
     rospy.Subscriber("/emotion", Char, sound_callback) #subscribing to detected gestures from detectfinger
+    # r = rospy.Rate(10)
+    # while not rospy.is_shutdown():
+    #     r.sleep()
  
 if __name__ == '__main__':
     huh = audio_object("huh")
@@ -77,5 +81,5 @@ if __name__ == '__main__':
     # huh.playme = True
 
     # huh.update()
-    subscriber()
-    except rospy.ROSInterruptException: pass
+    while not rospy.is_shutdown():
+        subscriber()
