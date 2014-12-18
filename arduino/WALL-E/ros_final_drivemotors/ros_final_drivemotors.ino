@@ -68,11 +68,11 @@ void motor_cb(const std_msgs::Char& cmd_msg){
       break;
     default:
       str_msg.data = waiting;
-      roboclaw.ForwardMixed(address,0);
-      delay(50);
+      // roboclaw.ForwardMixed(address,0);
+      // delay(50);
       roboclaw.TurnRightMixed(address,0);
-      delay(50);
       roboclaw.TurnLeftMixed(address,0);
+      roboclaw.ForwardMixed(address,15);
   }
 }
 else {

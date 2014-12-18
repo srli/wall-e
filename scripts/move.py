@@ -10,14 +10,17 @@ def callback(data):
 	global message, prev_pos
 	xposition = int(data.positionx)
 	print xposition
-	if xposition > 20:
+	if xposition > 50:
+		print "greater than 50"
 		message = 1
-	if xposition < -20:
+	elif xposition < -50:
+		print "less than 50"
 		message = 3
 	else:
 		message = 5	
+	
 	if prev_pos == xposition:
-		message = 5
+		message = 2
 	prev_pos = xposition
 	return
 
