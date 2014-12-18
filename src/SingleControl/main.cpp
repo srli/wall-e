@@ -46,6 +46,8 @@ xn::Context        g_Context;
 xn::DepthGenerator g_DepthGenerator;
 xn::UserGenerator  g_UserGenerator;
 
+
+//Below we declare the variables we're going to use to store our outbount ROS messages
 int xpos;
 int ypos;
 int zpos;
@@ -66,28 +68,24 @@ void XN_CALLBACK_TYPE SessionProgress(const XnChar* strFocus, const XnPoint3D& p
 void XN_CALLBACK_TYPE SessionStart(const XnPoint3D& ptFocusPoint, void* UserCxt)
 {
 	printf("Session started. Please wave (%6.2f,%6.2f,%6.2f)...\n", ptFocusPoint.X, ptFocusPoint.Y, ptFocusPoint.Z);
-	sess_start = true;
+	sess_start = true; //we set session start TRUE, allows us to generate a "hello" response
 }
 // Callback for session end
 void XN_CALLBACK_TYPE SessionEnd(void* UserCxt)
 {
 	printf("Session ended. Please perform focus gesture to start session\n");
-	sess_end = true;
+	sess_end = true; //we set session end TRUE, allows us to generate a "goodbye" response
 }
 // Callback for wave detection
 void XN_CALLBACK_TYPE OnWaveCB(void* cxt)
 {
 	printf("Wave!\n");
-	wave = true;
+	wave = true; //we set a wave flag, allows us to generate a generic interaction response
 }
 // callback for a new position of any hand
 void XN_CALLBACK_TYPE OnPointUpdate(const XnVHandPointContext* pContext, void* cxt)
-{
-	//std::stringstream ss;
-	//ss <<  pContext->nID << ": (" << pContext->ptPosition.X << ", " << pContext->ptPosition.Y << ", " << pContext->ptPosition.Z;
-	//msg.data = ss.str();
-//	rospub(pContext);
-	printf("%d: (%f,%f,%f) [%f]\n", pContext->nID, pContext->ptPosition.X, pContext->ptPosition.Y, pContext->ptPosition.Z, pContext->fTime);
+{	printf("%d: (%f,%f,%f) [%f]\n", pContext->nID, pContext->ptPosition.X, pContext->ptPosition.Y, pContext->ptPosition.Z, pContext->fTime);
+	//We pull data from the NiTE API, and pipe these to our outbound message holders
 	xpos = pContext->ptPosition.X;
 	ypos = pContext->ptPosition.Y;
 	zpos = pContext->ptPosition.Z;
@@ -137,14 +135,6 @@ int main(int argc, char** argv)
 	}
 	else
 	{
-		// Local mode
-		// Create context
-
-		//string configFilename = ros::package::getPath("walle") + "src/Data/Sample-Tracking.xml";
-    	//XnStatus nRetVal = g_Context.InitFromXmlFile(configFilename.c_str());
-    	//CHECK_RC(nRetVal, "InitFromXml");
-
-
 		const char *fn = NULL;
 		if      (fileExists(SAMPLE_XML_FILE)) fn = SAMPLE_XML_FILE;
 		else if (fileExists(SAMPLE_XML_FILE_LOCAL)) fn = SAMPLE_XML_FILE_LOCAL;
@@ -186,14 +176,14 @@ int main(int argc, char** argv)
 	printf("Hit any key to exit\n");
 
 
-	//INITIALIZING ROSNODE
+	//We initialize our ROS nodes and publishers here
 	ros::init(argc, argv, "pointcontrol", ros::init_options::NoSigintHandler);
   	ros::NodeHandle rosnode = ros::NodeHandle();
 
-  	ros::Publisher pub = rosnode.advertise<walle::pointerpos>("point_location", 10);
+  	ros::Publisher pub = rosnode.advertise<walle::pointerpos>("point_location", 10); //publisher for hand XYZ positions
   	walle::pointerpos msg;
 
-  	ros::Publisher pub_gestures = rosnode.advertise<walle::gestures>("detected_gestures", 10);
+  	ros::Publisher pub_gestures = rosnode.advertise<walle::gestures>("detected_gestures", 10); //publisher for gesture booleans
   	walle::gestures msg_gestures;
 
 
@@ -208,12 +198,8 @@ int main(int argc, char** argv)
 		{
 			context.WaitAnyUpdateAll();
 			((XnVSessionManager*)pSessionGenerator)->Update(&context);
-			//std::cout << xpos << std::endl;
 
-			//string String = static_cast<ostringstream*>( &(ostringstream() << xpos) )->str();
-			//msg = String;
-			
-			//msg.positions = xpos;
+			//fill out the custom message fields with the placeholders we've previously defined
 			msg.positionx = xpos;
 			msg.positiony = ypos;
 			msg.positionz = zpos;
@@ -224,12 +210,12 @@ int main(int argc, char** argv)
 			msg_gestures.goodbye = sess_end;
 			pub_gestures.publish(msg_gestures);
 			
+			//set gesture booleans back to false for re-initialization again
 			wave = false;
 			sess_start = false;
 			sess_end = false;
 
 			ros::spinOnce();
-			//std::cout << pContext->ptPosition.Y << std::endl;
 		}
 	}
 

@@ -8,7 +8,7 @@ from walle.msg import *
 
 def callback(data):
 	global message, prev_pos
-	xposition = int(data.positionx)
+	xposition = int(data.positionx) #we only care about the X position of the hand
 	print xposition
 	if xposition > 50:
 		print "greater than 50"
@@ -26,7 +26,7 @@ def callback(data):
 
 def publisher():
     rospy.init_node("centerfinger", anonymous = True)
-    rospy.Subscriber("/point_location", pointerpos, callback)
+    rospy.Subscriber("/point_location", pointerpos, callback) #subscribes to XYZ node from detectfinger
     pub = rospy.Publisher('/move', Char)
     r = rospy.Rate(10)
     while not rospy.is_shutdown():
@@ -35,6 +35,7 @@ def publisher():
  		r.sleep()
        
 if __name__ == "__main__":
+	print "move.py initialized!"
 	message = 5
 	prev_pos = 0
    	publisher()
